@@ -1,0 +1,436 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .gh-page { background: #0d1117; color: #e6edf3; border-radius: 12px; overflow: hidden; font-size: 14px; }
+  .gh-topbar { background: #161b22; border-bottom: 1px solid #30363d; padding: 8px 16px; display: flex; align-items: center; gap: 10px; }
+  .gh-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .gh-url { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 3px 10px; font-size: 11px; color: #8b949e; flex: 1; }
+  .banner-wrap { position: relative; overflow: hidden; border-bottom: 1px solid #30363d; }
+  canvas#bgCanvas { display: block; width: 100%; height: 220px; }
+  .banner-text { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+  .fairy-name { font-family: Georgia, serif; font-size: 26px; font-weight: 700; color: #e8d5ff; letter-spacing: 2px; text-shadow: 0 0 18px #a855f7; margin-bottom: 4px; }
+  .fairy-title { font-family: monospace; font-size: 12px; color: #7dd3fc; letter-spacing: 4px; text-transform: uppercase; }
+  .fairy-role { font-family: monospace; font-size: 10px; color: #a78bfa; letter-spacing: 2px; margin-top: 3px; }
+  canvas#fairyCanvas { position: absolute; top: 0; left: 0; pointer-events: none; }
+  .gh-section { padding: 16px 20px 0; }
+  .gh-section h2 { font-size: 13px; font-weight: 600; color: #e6edf3; margin-bottom: 10px; border-bottom: 1px solid #21262d; padding-bottom: 6px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 7px; }
+  .badge { padding: 3px 9px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .b-ts{background:#007ACC;color:#fff} .b-py{background:#3776AB;color:#fff} .b-go{background:#00ADD8;color:#fff}
+  .b-react{background:#20232A;color:#61DAFB;border:1px solid #61DAFB33} .b-next{background:#000;color:#fff;border:1px solid #ffffff22}
+  .b-tw{background:#38B2AC;color:#fff} .b-node{background:#339933;color:#fff} .b-docker{background:#2496ED;color:#fff} .b-pg{background:#316192;color:#fff}
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 12px; }
+  .stat-card .lbl { font-size: 10px; color: #8b949e; margin-bottom: 7px; }
+  .stat-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+  .stat-name { font-size: 11px; color: #c9d1d9; }
+  .stat-val { font-size: 11px; font-weight: 600; color: #58a6ff; }
+  .bar-bg { height: 3px; background: #21262d; border-radius: 2px; margin-top: 2px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 2px; }
+  .streak-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 12px; display: flex; justify-content: space-around; text-align: center; }
+  .streak-item .num { font-size: 20px; font-weight: 700; color: #e6edf3; }
+  .streak-item .lbl2 { font-size: 10px; color: #8b949e; margin-top: 2px; }
+  .repo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .repo-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 12px; }
+  .repo-name { color: #58a6ff; font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+  .repo-desc { font-size: 10px; color: #8b949e; line-height: 1.5; margin-bottom: 7px; }
+  .repo-meta { display: flex; gap: 10px; }
+  .repo-lang { display: flex; align-items: center; gap: 3px; font-size: 10px; color: #8b949e; }
+  .lang-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .snake-container { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 12px; }
+  .snake-grid { display: grid; grid-template-columns: repeat(52, 1fr); gap: 2px; }
+  .snake-cell { aspect-ratio: 1; border-radius: 2px; }
+  .visits-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .vcounter { display: flex; align-items: center; border-radius: 6px; overflow: hidden; font-size: 11px; font-weight: 600; }
+  .vc-label { background: #1c1917; color: #a8b3cf; padding: 5px 9px; }
+  .vc-val { background: #6366f1; color: #fff; padding: 5px 10px; }
+  .vc-val.teal { background: #0891b2; }
+  .gh-footer { background: linear-gradient(135deg,#1a1b27,#24283b); padding: 14px; text-align: center; margin-top: 16px; border-top: 1px solid #30363d; }
+  .section-wrap { padding-bottom: 14px; }
+</style>
+
+<h2 class="sr-only">Perfil GitHub de Valentina Bolivar con hada desarrolladora animada</h2>
+
+<div class="gh-page">
+  <div class="gh-topbar">
+    <div class="gh-dot" style="background:#ff5f57"></div>
+    <div class="gh-dot" style="background:#febc2e"></div>
+    <div class="gh-dot" style="background:#28c840"></div>
+    <div class="gh-url">github.com / ValenColm / ValenColm</div>
+  </div>
+
+  <div class="banner-wrap">
+    <canvas id="bgCanvas" width="680" height="220"></canvas>
+    <canvas id="fairyCanvas" width="680" height="220"></canvas>
+    <div class="banner-text">
+      <div class="fairy-name">Valentina Bolivar</div>
+      <div class="fairy-title">Software Developer</div>
+      <div class="fairy-role">AI · Automation · Backend</div>
+      <div class="visits-row">
+        <div class="vcounter"><span class="vc-label">Visitas</span><span class="vc-val" id="visitCount">1,284</span></div>
+        <div class="vcounter"><span class="vc-label">Seguidores</span><span class="vc-val teal">48</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gh-section section-wrap">
+    <h2>🛠️ Stack tecnologico</h2>
+    <div class="badge-row">
+      <span class="badge b-ts">TypeScript</span><span class="badge b-py">Python</span><span class="badge b-go">Go</span>
+    </div>
+    <div class="badge-row">
+      <span class="badge b-react">React</span><span class="badge b-next">Next.js</span><span class="badge b-tw">Tailwind</span>
+    </div>
+    <div class="badge-row">
+      <span class="badge b-node">Node.js</span><span class="badge b-docker">Docker</span><span class="badge b-pg">PostgreSQL</span>
+    </div>
+  </div>
+
+  <div class="gh-section section-wrap">
+    <h2>📊 Estadisticas</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="lbl">Lenguajes mas usados</div>
+        <div class="stat-row"><span class="stat-name">Python</span><span class="stat-val">52%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:52%;background:#3776AB"></div></div>
+        <div style="margin-top:5px" class="stat-row"><span class="stat-name">JavaScript</span><span class="stat-val">31%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:31%;background:#f7df1e"></div></div>
+        <div style="margin-top:5px" class="stat-row"><span class="stat-name">SQL</span><span class="stat-val">17%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:17%;background:#316192"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="lbl">Actividad general</div>
+        <div class="stat-row"><span class="stat-name">Stars</span><span class="stat-val">127</span></div>
+        <div class="stat-row" style="margin-top:5px"><span class="stat-name">Repos publicos</span><span class="stat-val">34</span></div>
+        <div class="stat-row" style="margin-top:5px"><span class="stat-name">Pull requests</span><span class="stat-val">98</span></div>
+        <div class="stat-row" style="margin-top:5px"><span class="stat-name">Commits</span><span class="stat-val">412</span></div>
+      </div>
+    </div>
+    <div style="margin-top:8px" class="streak-card">
+      <div class="streak-item"><div class="num">247</div><div class="lbl2">Contribuciones</div></div>
+      <div class="streak-item"><div class="num">🔥 42</div><div class="lbl2">Racha actual</div></div>
+      <div class="streak-item"><div class="num">89</div><div class="lbl2">Racha maxima</div></div>
+    </div>
+  </div>
+
+  <div class="gh-section section-wrap">
+    <h2>🚀 Proyectos destacados</h2>
+    <div class="repo-grid">
+      <div class="repo-card">
+        <div class="repo-name">Lummia — plataforma educativa</div>
+        <div class="repo-desc">Fullstack gamificado con tutor IA Google Gemini, XP y chat en tiempo real.</div>
+        <div class="repo-meta">
+          <span class="repo-lang"><span class="lang-dot" style="background:#3776AB"></span>Python</span>
+          <span style="font-size:10px;color:#8b949e">⭐ 84</span>
+        </div>
+      </div>
+      <div class="repo-card">
+        <div class="repo-name">FinBot — agente bilingual</div>
+        <div class="repo-desc">Agente fintech con RAG, Whisper, ElevenLabs y cache semantico.</div>
+        <div class="repo-meta">
+          <span class="repo-lang"><span class="lang-dot" style="background:#339933"></span>Node.js</span>
+          <span style="font-size:10px;color:#8b949e">⭐ 61</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gh-section section-wrap">
+    <h2>🐍 Contribuciones del año</h2>
+    <div class="snake-container">
+      <div class="snake-grid" id="snakeGrid"></div>
+    </div>
+  </div>
+
+  <div class="gh-footer">
+    <p style="font-size:11px;color:#8b949e;">Gracias por visitar mi perfil ✨ — Hecha con IA y mucho cafe</p>
+  </div>
+</div>
+
+<script>
+const bgCanvas = document.getElementById('bgCanvas');
+const bgCtx = bgCanvas.getContext('2d');
+const W = 680, H = 220;
+
+const snippets = ['{}','</>','()=>','AI','n8n','RAG','LLM','def','async','API','git','0101','✦','◆','>>>','MCP'];
+
+class BgParticle {
+  constructor(init) {
+    this.x = Math.random()*W;
+    this.y = init ? Math.random()*H : H+10;
+    this.vx = (Math.random()-0.5)*0.35;
+    this.vy = -(0.25+Math.random()*0.7);
+    this.alpha = 0; this.maxAlpha = 0.12+Math.random()*0.45;
+    this.size = 8+Math.random()*6;
+    this.text = snippets[Math.floor(Math.random()*snippets.length)];
+    this.hue = Math.random()<0.5 ? `hsl(${270+Math.random()*40},80%,${65+Math.random()*20}%)` : `hsl(${190+Math.random()*30},90%,${60+Math.random()*20}%)`;
+    this.life = 0; this.maxLife = 120+Math.random()*180;
+    this.wobble = Math.random()*Math.PI*2;
+    this.wobbleSpeed = 0.02+Math.random()*0.03;
+  }
+  update() {
+    this.life++; this.wobble += this.wobbleSpeed;
+    this.x += this.vx + Math.sin(this.wobble)*0.25;
+    this.y += this.vy;
+    const p = this.life/this.maxLife;
+    if(p<0.15) this.alpha=(p/0.15)*this.maxAlpha;
+    else if(p>0.75) this.alpha=((1-p)/0.25)*this.maxAlpha;
+    else this.alpha=this.maxAlpha;
+    if(this.life>this.maxLife||this.y<-20){this.x=Math.random()*W;this.y=H+10;this.life=0;this.maxLife=120+Math.random()*180;}
+  }
+  draw(c){
+    c.save(); c.globalAlpha=this.alpha; c.font=`${this.size}px monospace`; c.fillStyle=this.hue;
+    c.fillText(this.text,this.x,this.y); c.restore();
+  }
+}
+class Star {
+  constructor(){ this.x=Math.random()*W; this.y=Math.random()*H; this.r=0.4+Math.random()*1.4; this.phase=Math.random()*Math.PI*2; this.speed=0.005+Math.random()*0.02; this.color=Math.random()<0.5?'#d8b4fe':'#7dd3fc'; }
+  update(){ this.phase+=this.speed; }
+  draw(c){ c.save(); c.globalAlpha=0.25+0.65*((Math.sin(this.phase)+1)/2); c.beginPath(); c.arc(this.x,this.y,this.r,0,Math.PI*2); c.fillStyle=this.color; c.fill(); c.restore(); }
+}
+class StreamLine {
+  constructor(){ this.reset(); }
+  reset(){ this.x=Math.random()*W; this.y=Math.random()*H; this.len=15+Math.random()*50; this.angle=-Math.PI/2+(Math.random()-0.5)*0.5; this.speed=0.4+Math.random()*1.2; this.alpha=0.05+Math.random()*0.1; this.color=Math.random()<0.5?'#a855f7':'#0ea5e9'; this.life=0; this.maxLife=50+Math.random()*70; }
+  update(){ this.life++; this.x+=Math.cos(this.angle)*this.speed; this.y+=Math.sin(this.angle)*this.speed; if(this.life>this.maxLife||this.y<-20||this.x<-20||this.x>W+20) this.reset(); }
+  draw(c){ c.save(); c.globalAlpha=this.alpha; c.strokeStyle=this.color; c.lineWidth=0.7; c.beginPath(); c.moveTo(this.x,this.y); c.lineTo(this.x-Math.cos(this.angle)*this.len,this.y-Math.sin(this.angle)*this.len); c.stroke(); c.restore(); }
+}
+
+const bgParticles = Array.from({length:45},(_,i)=>new BgParticle(i<45));
+const stars = Array.from({length:70},()=>new Star());
+const streams = Array.from({length:20},()=>new StreamLine());
+
+function drawBg(){
+  bgCtx.clearRect(0,0,W,H);
+  bgCtx.fillStyle='#0a0118'; bgCtx.fillRect(0,0,W,H);
+  const g=bgCtx.createRadialGradient(W/2,H/2,0,W/2,H/2,240);
+  g.addColorStop(0,'rgba(88,28,135,0.22)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  bgCtx.fillStyle=g; bgCtx.fillRect(0,0,W,H);
+  stars.forEach(s=>{s.update();s.draw(bgCtx);});
+  streams.forEach(s=>{s.update();s.draw(bgCtx);});
+  bgParticles.forEach(p=>{p.update();p.draw(bgCtx);});
+}
+
+const fairyCanvas = document.getElementById('fairyCanvas');
+const fCtx = fairyCanvas.getContext('2d');
+
+class Dust {
+  constructor(x,y,angle){
+    this.x=x; this.y=y;
+    const spd=0.8+Math.random()*1.5;
+    this.vx=Math.cos(angle+Math.PI+(Math.random()-0.5)*1.2)*spd;
+    this.vy=Math.sin(angle+Math.PI+(Math.random()-0.5)*1.2)*spd-0.5;
+    this.life=0; this.maxLife=25+Math.random()*20;
+    this.r=1+Math.random()*2.5;
+    this.color=Math.random()<0.5?`hsl(${280+Math.random()*30},90%,75%)`:`hsl(${190+Math.random()*20},90%,75%)`;
+  }
+  update(){ this.life++; this.x+=this.vx; this.y+=this.vy; this.vy+=0.04; }
+  draw(){
+    const a=(1-this.life/this.maxLife)*0.85;
+    fCtx.save(); fCtx.globalAlpha=a; fCtx.beginPath(); fCtx.arc(this.x,this.y,this.r,0,Math.PI*2); fCtx.fillStyle=this.color; fCtx.fill(); fCtx.restore();
+  }
+  dead(){ return this.life>this.maxLife; }
+}
+
+const fairy = {
+  x: 80, y: 80,
+  tx: 80, ty: 80,
+  angle: 0,
+  wingPhase: 0,
+  glowPhase: 0,
+  dustTimer: 0,
+  path: [],
+  pathIndex: 0,
+  pathTimer: 0,
+  dusts: [],
+  init() {
+    this.path = [
+      {x:80,y:60},{x:200,y:40},{x:340,y:80},{x:480,y:45},{x:600,y:70},
+      {x:580,y:130},{x:440,y:160},{x:300,y:140},{x:160,y:165},{x:80,y:140},
+      {x:100,y:90},{x:250,y:55},{x:420,y:100},{x:550,y:60},{x:620,y:110},
+      {x:500,y:170},{x:350,y:185},{x:200,y:170},{x:90,y:180},{x:80,y:120}
+    ];
+    this.x = this.path[0].x; this.y = this.path[0].y;
+  },
+  update() {
+    this.wingPhase += 0.18;
+    this.glowPhase += 0.04;
+    this.pathTimer++;
+    if(this.pathTimer > 90) {
+      this.pathIndex = (this.pathIndex+1) % this.path.length;
+      this.pathTimer = 0;
+    }
+    const target = this.path[this.pathIndex];
+    const progress = this.pathTimer / 90;
+    const prevIdx = (this.pathIndex - 1 + this.path.length) % this.path.length;
+    const prev = this.path[prevIdx];
+    const dx = target.x - prev.x, dy = target.y - prev.y;
+    const oldX = this.x, oldY = this.y;
+    this.x = prev.x + dx * this.easeInOut(progress);
+    this.y = prev.y + dy * this.easeInOut(progress);
+    const moveX = this.x - oldX, moveY = this.y - oldY;
+    if(Math.abs(moveX)>0.01||Math.abs(moveY)>0.01) this.angle = Math.atan2(moveY, moveX);
+    this.dustTimer++;
+    if(this.dustTimer >= 3) {
+      this.dustTimer = 0;
+      for(let i=0;i<2;i++) this.dusts.push(new Dust(this.x, this.y+12, this.angle));
+    }
+    this.dusts = this.dusts.filter(d=>{ d.update(); return !d.dead(); });
+  },
+  easeInOut(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; },
+  draw() {
+    this.dusts.forEach(d=>d.draw());
+    const x=this.x, y=this.y;
+    const facing = Math.cos(this.angle) < 0 ? -1 : 1;
+    const glow = 0.5 + 0.5*Math.sin(this.glowPhase);
+
+    fCtx.save();
+    fCtx.translate(x, y);
+    fCtx.scale(facing, 1);
+
+    const wf = Math.sin(this.wingPhase);
+    const wb = Math.sin(this.wingPhase + Math.PI);
+
+    fCtx.save();
+    fCtx.globalAlpha = 0.35 + 0.2*glow;
+    fCtx.beginPath();
+    fCtx.moveTo(0,-6);
+    fCtx.bezierCurveTo(-8,-18,-28,-14,-22+wf*4,-2);
+    fCtx.bezierCurveTo(-14,6,-4,2,0,-6);
+    fCtx.fillStyle='#c4b5fd'; fCtx.fill();
+    fCtx.beginPath();
+    fCtx.moveTo(0,-4);
+    fCtx.bezierCurveTo(-5,-13,-18,-10,-14+wf*3,-1);
+    fCtx.bezierCurveTo(-9,4,-2,2,0,-4);
+    fCtx.fillStyle='#e9d5ff'; fCtx.fill();
+
+    fCtx.beginPath();
+    fCtx.moveTo(0,-6);
+    fCtx.bezierCurveTo(8,-18,28,-14,22+wb*4,-2);
+    fCtx.bezierCurveTo(14,6,4,2,0,-6);
+    fCtx.globalAlpha=0.28+0.15*glow; fCtx.fillStyle='#a5b4fc'; fCtx.fill();
+    fCtx.beginPath();
+    fCtx.moveTo(0,-4);
+    fCtx.bezierCurveTo(5,-12,17,-9,14+wb*3,-1);
+    fCtx.bezierCurveTo(9,3,2,1,0,-4);
+    fCtx.globalAlpha=0.35; fCtx.fillStyle='#bfdbfe'; fCtx.fill();
+    fCtx.restore();
+
+    fCtx.save();
+    fCtx.globalAlpha = 0.25+0.2*glow;
+    fCtx.beginPath(); fCtx.arc(0,-4,12,0,Math.PI*2);
+    fCtx.fillStyle='#7c3aed'; fCtx.fill();
+    fCtx.restore();
+
+    fCtx.save();
+    fCtx.globalAlpha=1;
+    fCtx.beginPath(); fCtx.ellipse(0,2,4,5,0,0,Math.PI*2);
+    fCtx.fillStyle='#1e3a5f'; fCtx.fill();
+    fCtx.beginPath(); fCtx.ellipse(0,2,3,4,0,0,Math.PI*2);
+    fCtx.fillStyle='#2563eb'; fCtx.fill();
+    fCtx.beginPath(); fCtx.ellipse(0.5,1,1,1.5,0,0,Math.PI*2);
+    fCtx.fillStyle='rgba(255,255,255,0.3)'; fCtx.fill();
+    fCtx.restore();
+
+    fCtx.save();
+    fCtx.globalAlpha=1;
+    fCtx.beginPath(); fCtx.arc(0,-10,5,0,Math.PI*2);
+    fCtx.fillStyle='#fcd5b0'; fCtx.fill();
+    fCtx.restore();
+
+    fCtx.save();
+    fCtx.globalAlpha=1;
+    fCtx.strokeStyle='#fcd5b0'; fCtx.lineWidth=1.5; fCtx.lineCap='round';
+    fCtx.beginPath(); fCtx.moveTo(-1,-5); fCtx.lineTo(-4,2); fCtx.stroke();
+    fCtx.beginPath(); fCtx.moveTo(1,-5); fCtx.lineTo(4,2); fCtx.stroke();
+    fCtx.beginPath(); fCtx.moveTo(-1,2); fCtx.lineTo(-3,9); fCtx.stroke();
+    fCtx.beginPath(); fCtx.moveTo(1,2); fCtx.lineTo(3,9); fCtx.stroke();
+    fCtx.restore();
+
+    fCtx.save();
+    fCtx.globalAlpha=1;
+    fCtx.strokeStyle='#fcd5b0'; fCtx.lineWidth=1.2;
+    const armAngle = -0.6 + 0.4*Math.sin(this.wingPhase*0.5);
+    fCtx.beginPath(); fCtx.moveTo(-1,-2);
+    fCtx.lineTo(-6+armAngle*3, 2+Math.sin(this.wingPhase)*1.5);
+    fCtx.stroke();
+
+    fCtx.save();
+    fCtx.translate(-6+armAngle*3, 2+Math.sin(this.wingPhase)*1.5);
+    fCtx.rotate(-0.3);
+    fCtx.strokeStyle='#94a3b8'; fCtx.lineWidth=1;
+    fCtx.fillStyle='#1e293b';
+    fCtx.beginPath(); fCtx.roundRect(-4,-3,9,7,1);
+    fCtx.fill(); fCtx.stroke();
+    fCtx.fillStyle='#38bdf8'; fCtx.font='4px monospace';
+    fCtx.fillText('>_',  -3, 1);
+    fCtx.restore();
+
+    fCtx.beginPath(); fCtx.moveTo(1,-2);
+    fCtx.lineTo(7, 3+Math.sin(this.wingPhase+1)*1.5);
+    fCtx.stroke();
+    fCtx.restore();
+
+    fCtx.save();
+    fCtx.globalAlpha=1; fCtx.fillStyle='#fcd5b0';
+    fCtx.beginPath(); fCtx.arc(-1.5,9,2,0,Math.PI*2); fCtx.fill();
+    fCtx.beginPath(); fCtx.arc(2,9,2,0,Math.PI*2); fCtx.fill();
+    fCtx.restore();
+
+    fCtx.save();
+    fCtx.globalAlpha=1; fCtx.fillStyle='#d4a847';
+    fCtx.beginPath(); fCtx.arc(-0.5,-15,2,0,Math.PI*2); fCtx.fill();
+    fCtx.strokeStyle='#d4a847'; fCtx.lineWidth=1;
+    fCtx.beginPath(); fCtx.moveTo(-0.5,-13); fCtx.lineTo(-0.5,-11); fCtx.stroke();
+    fCtx.restore();
+
+    const gs = 0.6+0.4*glow;
+    fCtx.save();
+    fCtx.globalAlpha=0.18*gs;
+    fCtx.beginPath(); fCtx.arc(0,0,22,0,Math.PI*2);
+    fCtx.fillStyle='#a855f7'; fCtx.fill();
+    fCtx.restore();
+
+    fCtx.restore();
+  }
+};
+
+fairy.init();
+
+function drawFairy(){
+  fCtx.clearRect(0,0,W,H);
+  fairy.update();
+  fairy.draw();
+}
+
+function loop(){
+  drawBg();
+  drawFairy();
+  requestAnimationFrame(loop);
+}
+loop();
+
+const grid = document.getElementById('snakeGrid');
+const snakeColors = ['#161b22','#0e4429','#006d32','#26a641','#39d353'];
+const snakeSet = new Set();
+for(let i=0;i<15;i++) snakeSet.add(10+i);
+for(let i=0;i<364;i++){
+  const cell=document.createElement('div');
+  cell.className='snake-cell';
+  const r=Math.random();
+  cell.style.background=snakeSet.has(i)?'#39d353':r>.85?snakeColors[4]:r>.7?snakeColors[3]:r>.55?snakeColors[2]:r>.4?snakeColors[1]:snakeColors[0];
+  grid.appendChild(cell);
+}
+const snakeArr=Array.from(snakeSet);
+function animSnake(){
+  const cells=grid.children;
+  snakeArr.forEach((idx,i)=>{
+    if(cells[idx]) cells[idx].style.background=i===snakeArr.length-1?'#161b22':i===0?'#58a6ff':'#39d353';
+  });
+  const next=(snakeArr[0]+1)%364; snakeArr.unshift(next); snakeArr.pop();
+  setTimeout(()=>requestAnimationFrame(animSnake),80);
+}
+animSnake();
+
+let count=1284;
+setInterval(()=>{ count++; document.getElementById('visitCount').textContent=count.toLocaleString('es-CO'); },3000);
+</script>

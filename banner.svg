@@ -1,0 +1,349 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 260" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0118" />
+      <stop offset="100%" stop-color="#16082c" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Star Glow Filter -->
+    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    /* Base Styles */
+    .bg { fill: url(#bgGrad); }
+    .window-bar { fill: #161b22; }
+    .window-border { stroke: #30363d; stroke-width: 1; }
+    .window-dot-red { fill: #ff5f57; }
+    .window-dot-yellow { fill: #febc2e; }
+    .window-dot-green { fill: #28c840; }
+    .window-address { fill: #0d1117; stroke: #30363d; stroke-width: 1; rx: 5px; }
+    
+    /* Typography */
+    .text-name { font-family: 'Georgia', serif; font-size: 26px; font-weight: 700; fill: #e8d5ff; text-shadow: 0 0 10px rgba(168, 85, 247, 0.6); }
+    .text-title { font-family: 'Courier New', Courier, monospace; font-size: 12px; font-weight: bold; fill: #7dd3fc; letter-spacing: 4px; }
+    .text-role { font-family: 'Courier New', Courier, monospace; font-size: 10px; fill: #a78bfa; letter-spacing: 2px; }
+    .text-url { font-family: Consolas, Monaco, monospace; font-size: 11px; fill: #8b949e; }
+
+    /* Star Twinkling Animation */
+    .star { fill: #ffffff; opacity: 0.3; }
+    .star-purple { fill: #d8b4fe; }
+    .star-cyan { fill: #7dd3fc; }
+    
+    .t-1 { animation: twinkle 3s infinite ease-in-out; }
+    .t-2 { animation: twinkle 4s infinite ease-in-out 1s; }
+    .t-3 { animation: twinkle 2.5s infinite ease-in-out 1.5s; }
+    .t-4 { animation: twinkle 5s infinite ease-in-out 0.5s; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Floating Snippets Animation */
+    .float-text {
+      font-family: Consolas, Monaco, 'Courier New', monospace;
+      font-size: 11px;
+      font-weight: bold;
+      opacity: 0;
+    }
+    .fp-purple { fill: #a855f7; }
+    .fp-cyan { fill: #0ea5e9; }
+    .fp-pink { fill: #ec4899; }
+
+    .f-1 { animation: floatPath1 12s infinite linear; }
+    .f-2 { animation: floatPath2 14s infinite linear 2s; }
+    .f-3 { animation: floatPath3 11s infinite linear 4s; }
+    .f-4 { animation: floatPath4 13s infinite linear 1s; }
+    .f-5 { animation: floatPath5 15s infinite linear 3s; }
+
+    @keyframes floatPath1 {
+      0% { transform: translate(60px, 270px); opacity: 0; }
+      15% { opacity: 0.35; }
+      85% { opacity: 0.35; }
+      100% { transform: translate(80px, 45px); opacity: 0; }
+    }
+    @keyframes floatPath2 {
+      0% { transform: translate(180px, 270px); opacity: 0; }
+      15% { opacity: 0.45; }
+      85% { opacity: 0.45; }
+      100% { transform: translate(160px, 50px); opacity: 0; }
+    }
+    @keyframes floatPath3 {
+      0% { transform: translate(320px, 270px); opacity: 0; }
+      15% { opacity: 0.3; }
+      85% { opacity: 0.3; }
+      100% { transform: translate(350px, 45px); opacity: 0; }
+    }
+    @keyframes floatPath4 {
+      0% { transform: translate(480px, 270px); opacity: 0; }
+      15% { opacity: 0.45; }
+      85% { opacity: 0.45; }
+      100% { transform: translate(460px, 55px); opacity: 0; }
+    }
+    @keyframes floatPath5 {
+      0% { transform: translate(600px, 270px); opacity: 0; }
+      15% { opacity: 0.35; }
+      85% { opacity: 0.35; }
+      100% { transform: translate(580px, 50px); opacity: 0; }
+    }
+
+    /* Fairy Animations */
+    .fairy-group {
+      animation: flyPath 20s infinite ease-in-out;
+    }
+    .fairy-hover {
+      animation: hoverBob 2s infinite ease-in-out;
+    }
+    .wing-l-group {
+      animation: flapLeft 0.12s infinite linear;
+    }
+    .wing-r-group {
+      animation: flapRight 0.12s infinite linear;
+    }
+    .glow-pulse {
+      animation: glowPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes flyPath {
+      0% { transform: translate(60px, 130px) scaleX(1); }
+      10% { transform: translate(150px, 95px) scaleX(1); }
+      20% { transform: translate(260px, 125px) scaleX(1); }
+      30% { transform: translate(380px, 85px) scaleX(1); }
+      40% { transform: translate(490px, 125px) scaleX(1); }
+      48% { transform: translate(580px, 95px) scaleX(1); }
+      50% { transform: translate(590px, 105px) scaleX(-1); }
+      60% { transform: translate(500px, 135px) scaleX(-1); }
+      70% { transform: translate(390px, 95px) scaleX(-1); }
+      80% { transform: translate(280px, 130px) scaleX(-1); }
+      90% { transform: translate(160px, 85px) scaleX(-1); }
+      98% { transform: translate(70px, 120px) scaleX(-1); }
+      100% { transform: translate(60px, 130px) scaleX(1); }
+    }
+
+    @keyframes hoverBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes flapLeft {
+      0%, 100% { transform: translate(0, -3px) scaleX(1); }
+      50% { transform: translate(0, -3px) scaleX(0.15) rotate(-5deg); }
+    }
+
+    @keyframes flapRight {
+      0%, 100% { transform: translate(0, -3px) scaleX(1); }
+      50% { transform: translate(0, -3px) scaleX(0.15) rotate(5deg); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.15; transform: scale(0.9); }
+      50% { opacity: 0.35; transform: scale(1.15); }
+    }
+
+    /* Magic Dust Sparkles */
+    .dust {
+      opacity: 0;
+      fill: #e9d5ff;
+      animation: spark 20s infinite ease-out;
+    }
+    @keyframes spark {
+      0% { opacity: 0; }
+      0.5% { opacity: 1; }
+      5% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    .dust-1 { animation-delay: 0s; }
+    .dust-2 { animation-delay: 1s; }
+    .dust-3 { animation-delay: 2s; }
+    .dust-4 { animation-delay: 3s; }
+    .dust-5 { animation-delay: 4s; }
+    .dust-6 { animation-delay: 5s; }
+    .dust-7 { animation-delay: 6s; }
+    .dust-8 { animation-delay: 7s; }
+    .dust-9 { animation-delay: 8s; }
+    .dust-10 { animation-delay: 9s; }
+    .dust-11 { animation-delay: 10s; }
+    .dust-12 { animation-delay: 11s; }
+    .dust-13 { animation-delay: 12s; }
+    .dust-14 { animation-delay: 13s; }
+    .dust-15 { animation-delay: 14s; }
+    .dust-16 { animation-delay: 15s; }
+    .dust-17 { animation-delay: 16s; }
+    .dust-18 { animation-delay: 17s; }
+    .dust-19 { animation-delay: 18s; }
+    .dust-20 { animation-delay: 19s; }
+  </style>
+
+  <!-- Background Rect -->
+  <rect width="680" height="260" rx="12" class="bg" />
+
+  <!-- Window Frame Topbar -->
+  <path d="M 0 12 A 12 12 0 0 1 12 0 L 668 0 A 12 12 0 0 1 680 12 L 680 38 L 0 38 Z" class="window-bar" />
+  <line x1="0" y1="38" x2="680" y2="38" class="window-border" />
+  
+  <!-- Window Control Dots -->
+  <circle cx="20" cy="19" r="5" class="window-dot-red" />
+  <circle cx="36" cy="19" r="5" class="window-dot-yellow" />
+  <circle cx="52" cy="19" r="5" class="window-dot-green" />
+
+  <!-- Window Address Bar -->
+  <rect x="130" y="7" width="420" height="24" rx="6" class="window-address" />
+  <text x="340" y="23" text-anchor="middle" class="text-url">github.com/ValenColm/ValenColm</text>
+
+  <!-- Twinkling Stars Background -->
+  <g id="stars">
+    <circle cx="45" cy="65" r="1.2" class="star t-1 star-purple" />
+    <circle cx="85" cy="85" r="1.5" class="star t-2" />
+    <circle cx="115" cy="55" r="0.9" class="star t-3 star-cyan" />
+    <circle cx="175" cy="75" r="1.2" class="star t-1" />
+    <circle cx="230" cy="60" r="1.6" class="star t-4 star-purple" />
+    <circle cx="290" cy="80" r="1" class="star t-2" />
+    <circle cx="340" cy="50" r="1.4" class="star t-3 star-cyan" />
+    <circle cx="410" cy="70" r="1" class="star t-1" />
+    <circle cx="460" cy="55" r="1.5" class="star t-4" />
+    <circle cx="520" cy="85" r="0.8" class="star t-2 star-purple" />
+    <circle cx="570" cy="65" r="1.3" class="star t-3" />
+    <circle cx="630" cy="75" r="1.6" class="star t-1 star-cyan" />
+    
+    <circle cx="35" cy="180" r="1" class="star t-3" />
+    <circle cx="95" cy="220" r="1.5" class="star t-4 star-cyan" />
+    <circle cx="155" cy="190" r="0.8" class="star t-1" />
+    <circle cx="215" cy="230" r="1.2" class="star t-2 star-purple" />
+    <circle cx="275" cy="175" r="1.4" class="star t-3" />
+    <circle cx="315" cy="215" r="1" class="star t-4" />
+    <circle cx="375" cy="185" r="1.5" class="star t-1 star-cyan" />
+    <circle cx="435" cy="235" r="0.9" class="star t-2" />
+    <circle cx="495" cy="195" r="1.3" class="star t-3 star-purple" />
+    <circle cx="555" cy="225" r="1.6" class="star t-4" />
+    <circle cx="615" cy="180" r="1.1" class="star t-1 star-cyan" />
+    <circle cx="650" cy="215" r="1.4" class="star t-2" />
+  </g>
+
+  <!-- Floating Coding Snippets -->
+  <g id="floaters">
+    <text class="float-text fp-purple f-1">{}</text>
+    <text class="float-text fp-cyan f-2">&lt;/&gt;</text>
+    <text class="float-text fp-pink f-3">()=&gt;</text>
+    <text class="float-text fp-purple f-4">AI</text>
+    <text class="float-text fp-cyan f-5">n8n</text>
+    <text class="float-text fp-pink f-1" style="animation-delay: 6s;">RAG</text>
+    <text class="float-text fp-purple f-2" style="animation-delay: 8s;">LLM</text>
+    <text class="float-text fp-cyan f-3" style="animation-delay: 9s;">def</text>
+    <text class="float-text fp-pink f-4" style="animation-delay: 7s;">async</text>
+    <text class="float-text fp-purple f-5" style="animation-delay: 10s;">API</text>
+    <text class="float-text fp-cyan f-1" style="animation-delay: 3s;">git</text>
+    <text class="float-text fp-pink f-2" style="animation-delay: 5s;">✦</text>
+  </g>
+
+  <!-- Sparkles / Magic Dust Trail -->
+  <g id="dust-trail">
+    <circle cx="60" cy="130" r="2.5" class="dust dust-1" />
+    <circle cx="105" cy="112" r="3.2" class="dust dust-2" />
+    <circle cx="150" cy="95" r="2.8" class="dust dust-3" />
+    <circle cx="205" cy="110" r="2.2" class="dust dust-4" />
+    <circle cx="260" cy="125" r="2.8" class="dust dust-5" />
+    <circle cx="320" cy="105" r="3.2" class="dust dust-6" />
+    <circle cx="380" cy="85" r="2.5" class="dust dust-7" />
+    <circle cx="435" cy="105" r="2.2" class="dust dust-8" />
+    <circle cx="490" cy="125" r="2.8" class="dust dust-9" />
+    <circle cx="540" cy="110" r="3.2" class="dust dust-10" />
+    <circle cx="580" cy="95" r="2.5" class="dust dust-11" />
+    <circle cx="540" cy="115" r="2.5" class="dust dust-12" />
+    <circle cx="500" cy="135" r="3.2" class="dust dust-13" />
+    <circle cx="445" cy="115" r="2.2" class="dust dust-14" />
+    <circle cx="390" cy="95" r="2.8" class="dust dust-15" />
+    <circle cx="335" cy="110" r="2.8" class="dust dust-16" />
+    <circle cx="280" cy="130" r="3.2" class="dust dust-17" />
+    <circle cx="220" cy="108" r="2.2" class="dust dust-18" />
+    <circle cx="160" cy="85" r="2.8" class="dust dust-19" />
+    <circle cx="110" cy="105" r="2.8" class="dust dust-20" />
+  </g>
+
+  <!-- Title & Text Banner -->
+  <g transform="translate(0, 0)">
+    <!-- Neon Underglow -->
+    <text x="340" y="132" text-anchor="middle" class="text-name" fill="#a855f7" filter="url(#glow)" opacity="0.7">Valentina Bolivar</text>
+    <!-- Sharp Front Text -->
+    <text x="340" y="132" text-anchor="middle" class="text-name">Valentina Bolivar</text>
+
+    <!-- Subtitles -->
+    <text x="340" y="162" text-anchor="middle" class="text-title">SOFTWARE DEVELOPER</text>
+    <text x="340" y="186" text-anchor="middle" class="text-role">AI · AUTOMATION · BACKEND</text>
+  </g>
+
+  <!-- Animated Fairy (Tinkerbell) -->
+  <g class="fairy-group">
+    <g class="fairy-hover">
+      <!-- Glow effect behind fairy -->
+      <circle cx="0" cy="0" r="15" fill="#a855f7" opacity="0.25" class="glow-pulse" filter="url(#starGlow)" />
+      
+      <!-- Left Wings Group -->
+      <g class="wing-l-group">
+        <!-- Main big wing -->
+        <path d="M0,0 C-8,-12 -28,-8 -22,4 C-14,12 -4,8 0,0 Z" fill="#c4b5fd" opacity="0.6" />
+        <!-- Small inner wing -->
+        <path d="M0,0 C-5,-9 -18,-6 -14,3 C-9,9 -2,7 0,0 Z" fill="#e9d5ff" opacity="0.8" />
+      </g>
+      
+      <!-- Right Wings Group -->
+      <g class="wing-r-group">
+        <!-- Main big wing -->
+        <path d="M0,0 C8,-12 28,-8 22,4 C14,12 4,8 0,0 Z" fill="#a5b4fc" opacity="0.5" />
+        <!-- Small inner wing -->
+        <path d="M0,0 C5,-9 17,-6 14,3 C9,9 2,7 0,0 Z" fill="#bfdbfe" opacity="0.7" />
+      </g>
+
+      <!-- Legs -->
+      <line x1="-1.5" y1="2" x2="-3" y2="10" stroke="#fcd5b0" stroke-width="1.5" stroke-linecap="round" />
+      <line x1="1.5" y1="2" x2="3" y2="10" stroke="#fcd5b0" stroke-width="1.5" stroke-linecap="round" />
+      <circle cx="-3" cy="10" r="1.5" fill="#fcd5b0" />
+      <circle cx="3" cy="10" r="1.5" fill="#fcd5b0" />
+
+      <!-- Body -->
+      <ellipse cx="0" cy="2" rx="4" ry="5" fill="#1e3a5f" />
+      <ellipse cx="0" cy="2" rx="3" ry="4" fill="#2563eb" />
+
+      <!-- Head & Hair -->
+      <circle cx="0" cy="-8" r="4.5" fill="#fcd5b0" />
+      <!-- Golden Bun/Hair -->
+      <circle cx="0" cy="-13" r="2.2" fill="#d4a847" />
+      <path d="M-4.5,-9 C-4.5,-12 4.5,-12 4.5,-9 Z" fill="#d4a847" />
+
+      <!-- Arms -->
+      <!-- Right Arm (resting/balancing) -->
+      <line x1="2.5" y1="-2" x2="7" y2="3" stroke="#fcd5b0" stroke-width="1.2" stroke-linecap="round" />
+      
+      <!-- Left Arm & Mini-Laptop -->
+      <g>
+        <line x1="-2.5" y1="-2" x2="-6.5" y2="2" stroke="#fcd5b0" stroke-width="1.2" stroke-linecap="round" />
+        <!-- Laptop Group -->
+        <g transform="translate(-7, 2) rotate(-8)">
+          <!-- Base / keyboard -->
+          <line x1="-3" y1="2.5" x2="3" y2="2.5" stroke="#94a3b8" stroke-width="1" stroke-linecap="round" />
+          <!-- Screen -->
+          <rect x="-3.5" y="-3.5" width="7" height="5.5" rx="0.8" fill="#1e293b" stroke="#38bdf8" stroke-width="0.5" />
+          <!-- Glowing Terminal Indicator -->
+          <text x="-2.2" y="0.5" fill="#38bdf8" font-family="monospace" font-size="3.5" font-weight="bold">>_</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
