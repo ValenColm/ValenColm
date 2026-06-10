@@ -67,6 +67,18 @@
     border-radius: 50% !important;
     z-index: 2;
   }
+  .about-code { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 14px 16px; font-family: 'Courier New', Consolas, monospace; font-size: 11.5px; line-height: 1.85; overflow-x: auto; margin-bottom: 12px; }
+  .ac-kw   { color: #ff7b72; }  /* keyword: class, def, return */
+  .ac-cls  { color: #ffa657; }  /* class name */
+  .ac-attr { color: #79c0ff; }  /* attribute name */
+  .ac-eq   { color: #e6edf3; }  /* = sign */
+  .ac-str  { color: #a5d6ff; }  /* string value */
+  .ac-self { color: #c9d1d9; }  /* self */
+  .ac-fn   { color: #d2a8ff; }  /* method name */
+  .ac-com  { color: #8b949e; font-style: italic; } /* comment */
+  .about-para { font-size: 12px; color: #c9d1d9; line-height: 1.75; padding: 4px 0 2px; }
+  .about-para strong { color: #d8b4fe; }
+  .about-quote { font-size: 11px; color: #7dd3fc; font-style: italic; text-align: center; margin-top: 10px; opacity: 0.85; }
   .visits-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
   .vcounter { display: flex; align-items: center; border-radius: 6px; overflow: hidden; font-size: 11px; font-weight: 600; }
   .vc-label { background: #1c1917; color: #a8b3cf; padding: 5px 9px; }
@@ -102,14 +114,30 @@
 
   <div class="gh-section section-wrap" style="padding-top:14px">
     <h2>👩‍💻 About Me</h2>
-    <p style="font-size:12px;color:#c9d1d9;line-height:1.7;padding:8px 0 4px;">
-      Colombian software developer passionate about building intelligent systems that bridge
-      <strong style="color:#d8b4fe">AI</strong> and real-world products.
-      I specialise in backend development, autonomous AI agents, and smart API integrations —
-      turning complex problems into clean, automated solutions.
-      Currently focused on LLM-powered apps, multi-agent workflows, and fullstack projects
-      that actually ship. ✨
+    <div class="about-code">
+      <span class="ac-kw">class</span> <span class="ac-cls">DismaryBolivar</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-attr">name</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-eq">=</span> <span class="ac-str">"Dismary Valentina Bolivar Colmenares"</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-attr">role</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-eq">=</span> <span class="ac-str">"AI Developer &amp; Automation Engineer"</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-attr">languages</span>&nbsp;&nbsp;<span class="ac-eq">=</span> <span class="ac-str">["Spanish (Native)", "English (B1)"]</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-attr">focus</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-eq">=</span> <span class="ac-str">["AI Agents", "Backend", "Automation", "Smart APIs"]</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-attr">passion</span>&nbsp;&nbsp;&nbsp;<span class="ac-eq">=</span> <span class="ac-str">["LLMs", "Clean Code", "Real-world AI solutions"]</span><br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-kw">def</span> <span class="ac-fn">say_hello</span>(<span class="ac-self">self</span>):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ac-kw">return</span> <span class="ac-str">"Building AI that actually ships 🚀"</span>
+    </div>
+    <p class="about-para">
+      I'm an <strong>AI Developer &amp; Automation Engineer</strong> with a strong focus on building
+      intelligent, production-ready systems. My expertise covers <strong>Python</strong>, <strong>FastAPI</strong>,
+      <strong>Node.js</strong> and <strong>PostgreSQL</strong> for backend, combined with
+      <strong>LangChain</strong>, <strong>RAG pipelines</strong> and <strong>n8n</strong> to design
+      autonomous AI agents and smart automated workflows.
     </p>
+    <p class="about-para" style="margin-top:7px">
+      I build software that is <strong>purposeful and production-minded</strong> — from intelligent APIs
+      and multi-agent architectures to fullstack platforms that deliver real measurable value.
+      Every project is an opportunity to push technical depth and make AI work for people.
+    </p>
+    <div class="about-quote">"Every line of code is a step toward something smarter. ✨"</div>
   </div>
 
   <div class="gh-section section-wrap">

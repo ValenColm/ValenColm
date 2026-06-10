@@ -15,11 +15,29 @@
 
 ---
 
-## About Me
+## 👩‍💻 About Me
 
-Colombian software developer passionate about building intelligent systems that bridge **AI** and real-world products.
-I specialise in backend development, autonomous AI agents, and smart API integrations — turning complex problems into clean, automated solutions.
-Currently focused on LLM-powered apps, multi-agent workflows, and fullstack projects that actually ship. ✨
+```python
+class DismaryBolivar:
+    name       = "Dismary Valentina Bolivar Colmenares"
+    role       = "AI Developer & Automation Engineer"
+    languages  = ["Spanish (Native)", "English (B1)"]
+    focus      = ["AI Agents", "Backend", "Automation", "Smart APIs"]
+    passion    = ["LLMs", "Clean Code", "Real-world AI solutions"]
+
+    def say_hello(self):
+        return "Building AI that actually ships 🚀"
+```
+
+I'm an **AI Developer & Automation Engineer** with a strong focus on building intelligent, production-ready systems.
+My expertise covers **Python**, **FastAPI**, **Node.js** and **PostgreSQL** for backend, combined with
+**LangChain**, **RAG pipelines** and **n8n** to design autonomous AI agents and smart automated workflows.
+
+I build software that is **purposeful and production-minded** — from intelligent APIs and multi-agent architectures
+to fullstack platforms that deliver real measurable value. Every project is an opportunity to push technical depth
+and make AI work for people.
+
+> *"Every line of code is a step toward something smarter. ✨"*
 
 ---
 
