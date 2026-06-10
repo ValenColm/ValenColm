@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://github.com/ValenColm">
-  <img src="./banner.svg" alt="Valentina Bolivar - Desarrolladora de Software" width="100%"/>
+  <img src="./banner.svg?v=4" alt="Valentina Bolivar - Desarrolladora de Software" width="100%"/>
 </a>
 
 <br/>
@@ -91,7 +91,7 @@
 
 <div align="center">
 
-![snake animation](https://raw.githubusercontent.com/ValenColm/ValenColm/output/github-contribution-grid-snake-dark.svg)
+![snake animation](https://raw.githubusercontent.com/ValenColm/ValenColm/output/github-contribution-grid-snake-dark.svg?v=4)
 
 </div>
 
