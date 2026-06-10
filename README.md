@@ -58,20 +58,18 @@
 
 ---
 
-## Repositorios Destacados
+## Proyecto Destacado
 
-<div align="center">
+### [Lummia — Gamified Learning Platform](https://github.com/LuisCampillo10/lumia-integrative-project-thompson)
 
-[![avanta](https://github-readme-stats.vercel.app/api/pin/?username=ValenColm&repo=avanta&bg_color=0a0118&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&hide_border=true)](https://github.com/ValenColm/avanta)
-[![simulacron8n](https://github-readme-stats.vercel.app/api/pin/?username=ValenColm&repo=simulacron8n&bg_color=0a0118&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&hide_border=true)](https://github.com/ValenColm/simulacron8n)
+> Plataforma educativa Fullstack con sistema de XP/ranking, chat en tiempo real y tutor de IA impulsado por **Google Gemini**. Construido con arquitectura modular como proyecto integrador en RIWI.
 
-[![simulacro](https://github-readme-stats.vercel.app/api/pin/?username=ValenColm&repo=simulacro&bg_color=0a0118&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&hide_border=true)](https://github.com/ValenColm/simulacro)
-[![DEEPSEEK](https://github-readme-stats.vercel.app/api/pin/?username=ValenColm&repo=DEEPSEEK&bg_color=0a0118&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&hide_border=true)](https://github.com/ValenColm/DEEPSEEK)
-
-[![whisper](https://github-readme-stats.vercel.app/api/pin/?username=ValenColm&repo=whisper&bg_color=0a0118&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&hide_border=true)](https://github.com/ValenColm/whisper)
-[![taller_database](https://github-readme-stats.vercel.app/api/pin/?username=ValenColm&repo=taller_database&bg_color=0a0118&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&hide_border=true)](https://github.com/ValenColm/taller_database)
-
-</div>
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)
+![Vanilla JS](https://img.shields.io/badge/Vanilla_JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Google Gemini](https://img.shields.io/badge/Google_Gemini-8E75C2?style=flat-square&logo=googlegemini&logoColor=white)
+![WebSockets](https://img.shields.io/badge/WebSockets-010101?style=flat-square)
+![SQL](https://img.shields.io/badge/SQL-316192?style=flat-square&logo=postgresql&logoColor=white)
 
 ---
 
