@@ -20,7 +20,7 @@
 ```python
 class DismaryBolivar:
     name       = "Dismary Valentina Bolivar Colmenares"
-    role       = "AI Developer & Automation Engineer"
+    role       = "Software Developer | AI Developer & Automation Engineer"
     languages  = ["Spanish (Native)", "English (B1)"]
     focus      = ["AI Agents", "Backend", "Automation", "Smart APIs"]
     passion    = ["LLMs", "Clean Code", "Real-world AI solutions"]
