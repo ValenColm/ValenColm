@@ -1,13 +1,13 @@
 <div align="center">
 
 <a href="https://github.com/ValenColm">
-  <img src="https://raw.githubusercontent.com/ValenColm/ValenColm/main/banner.svg?v=5" alt="Valentina Bolivar - Desarrolladora de Software" width="100%"/>
+  <img src="https://raw.githubusercontent.com/ValenColm/ValenColm/main/banner.svg?v=6" alt="Valentina Bolivar - Software Developer" width="100%"/>
 </a>
 
 <br/>
 
-[![Visits](https://komarev.com/ghpvc/?username=ValenColm&label=Visitas&color=7c3aed&style=flat-square)](https://github.com/ValenColm)
-[![Seguidores](https://img.shields.io/github/followers/ValenColm?label=Seguidores&style=flat-square&color=0891b2&logo=github)](https://github.com/ValenColm?tab=followers)
+[![Visits](https://komarev.com/ghpvc/?username=ValenColm&label=Visits&color=7c3aed&style=flat-square)](https://github.com/ValenColm)
+[![Followers](https://img.shields.io/github/followers/ValenColm?label=Followers&style=flat-square&color=0891b2&logo=github)](https://github.com/ValenColm?tab=followers)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-valentina--bolivar--ia-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/valentina-bolivar-ia)
 [![Email](https://img.shields.io/badge/Email-dismarybolivar1711@gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:dismarybolivar1711@gmail.com)
 
@@ -15,11 +15,19 @@
 
 ---
 
-## Stack Tecnologico
+## About Me
+
+Colombian software developer passionate about building intelligent systems that bridge **AI** and real-world products.
+I specialise in backend development, autonomous AI agents, and smart API integrations — turning complex problems into clean, automated solutions.
+Currently focused on LLM-powered apps, multi-agent workflows, and fullstack projects that actually ship. ✨
+
+---
+
+## Tech Stack
 
 <div align="center">
 
-**Lenguajes**
+**Languages**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -27,24 +35,24 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 
-**Frameworks y Backend**
+**Frameworks & Backend**
 
 ![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white)
 
-**IA y Automatizacion**
+**AI & Automation**
 
 ![OpenAI](https://img.shields.io/badge/OpenAI_API-412991?style=flat-square&logo=openai&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
 ![n8n](https://img.shields.io/badge/n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white)
 ![Ollama](https://img.shields.io/badge/Ollama-000000?style=flat-square)
-![IA Agentes](https://img.shields.io/badge/IA_Agentes-6366f1?style=flat-square)
-![IA Integrations](https://img.shields.io/badge/IA_Integrations-7c3aed?style=flat-square)
-![APIs Inteligentes](https://img.shields.io/badge/APIs_Inteligentes-ec4899?style=flat-square)
+![AI Agents](https://img.shields.io/badge/AI_Agents-6366f1?style=flat-square)
+![AI Integrations](https://img.shields.io/badge/AI_Integrations-7c3aed?style=flat-square)
+![Smart APIs](https://img.shields.io/badge/Smart_APIs-ec4899?style=flat-square)
 
-**Bases de Datos y DevOps**
+**Databases & DevOps**
 
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
@@ -57,11 +65,11 @@
 
 ---
 
-## Proyecto Destacado
+## Featured Project
 
 ### [Lummia — Gamified Learning Platform](https://github.com/LuisCampillo10/lumia-integrative-project-thompson)
 
-> Plataforma educativa Fullstack con sistema de XP/ranking, chat en tiempo real y tutor de IA impulsado por **Google Gemini**. Construido con arquitectura modular como proyecto integrador en RIWI.
+> Fullstack educational platform with XP/ranking system, real-time chat and an AI tutor powered by **Google Gemini**. Built with modular architecture as an integrative project at RIWI.
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)
@@ -72,31 +80,31 @@
 
 ---
 
-## Estadisticas de GitHub
+## GitHub Statistics
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=ValenColm&show_icons=true&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&bg_color=0a0118&hide_border=true&count_private=true&include_all_commits=true" alt="Stats de Valentina" height="175px"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ValenColm&layout=compact&title_color=d8b4fe&text_color=e6edf3&bg_color=0a0118&hide_border=true&langs_count=6" alt="Lenguajes" height="175px"/>
+<img src="https://github-readme-stats.vercel.app/api?username=ValenColm&show_icons=true&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&bg_color=0a0118&hide_border=true&count_private=true&include_all_commits=true" alt="Valentina's Stats" height="175px"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ValenColm&layout=compact&title_color=d8b4fe&text_color=e6edf3&bg_color=0a0118&hide_border=true&langs_count=6" alt="Top Languages" height="175px"/>
 
 <br/>
 
-<img src="https://streak-stats.demolab.com/?user=ValenColm&currStreakNum=d8b4fe&sideNums=e6edf3&sideLabels=8b949e&currStreakLabel=7dd3fc&background=0a0118&fire=7dd3fc&ring=a855f7&stroke=30363d&hide_border=true" alt="Racha" height="175px"/>
+<img src="https://streak-stats.demolab.com/?user=ValenColm&currStreakNum=d8b4fe&sideNums=e6edf3&sideLabels=8b949e&currStreakLabel=7dd3fc&background=0a0118&fire=7dd3fc&ring=a855f7&stroke=30363d&hide_border=true" alt="Streak" height="175px"/>
 
 </div>
 
 ---
 
-## Serpiente de Contribuciones
+## Contribution Snake
 
 <div align="center">
 
-![snake animation](https://raw.githubusercontent.com/ValenColm/ValenColm/output/github-contribution-grid-snake-dark.svg?v=4)
+![snake animation](https://raw.githubusercontent.com/ValenColm/ValenColm/output/github-contribution-grid-snake-dark.svg?v=5)
 
 </div>
 
 ---
 
 <div align="center">
-<i>Gracias por visitar mi perfil — Hecho con mucho café</i>
+<i>Thanks for visiting my profile — Built with a lot of coffee ☕</i>
 </div>
