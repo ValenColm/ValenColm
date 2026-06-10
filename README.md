@@ -109,12 +109,11 @@ and make AI work for people.
       <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ValenColm&layout=compact&title_color=d8b4fe&text_color=e6edf3&bg_color=0d1117&hide_border=true&langs_count=6" alt="Top Languages" width="100%"/>
     </td>
   </tr>
-  <tr>
-    <td colspan="2" align="center">
-      <img src="https://streak-stats.demolab.com/?user=ValenColm&currStreakNum=d8b4fe&sideNums=e6edf3&sideLabels=8b949e&currStreakLabel=7dd3fc&background=0d1117&fire=7dd3fc&ring=a855f7&stroke=30363d&hide_border=true" alt="Streak" width="60%"/>
-    </td>
-  </tr>
 </table>
+
+<br/>
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=ValenColm&bg_color=0d1117&color=d8b4fe&line=7dd3fc&point=a855f7&area_color=7c3aed&area=true&hide_border=true" alt="Activity Graph" width="100%"/>
 
 ---
 
