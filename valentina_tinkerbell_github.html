@@ -39,7 +39,17 @@
   .lang-dot { width: 7px; height: 7px; border-radius: 50%; }
   .snake-container { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 12px; }
   .snake-grid { display: grid; grid-template-columns: repeat(52, 1fr); gap: 2px; }
-  .snake-cell { aspect-ratio: 1; border-radius: 2px; }
+  .snake-cell { aspect-ratio: 1; border-radius: 2px; transition: background 0.12s ease, transform 0.08s ease, box-shadow 0.12s ease; }
+  @keyframes pulse-food {
+    0% { transform: scale(0.8); background-color: #a855f7; box-shadow: 0 0 5px #a855f7; }
+    50% { transform: scale(1.15); background-color: #00f2fe; box-shadow: 0 0 12px #00f2fe; }
+    100% { transform: scale(0.8); background-color: #a855f7; box-shadow: 0 0 5px #a855f7; }
+  }
+  .snake-food {
+    animation: pulse-food 1.2s infinite ease-in-out;
+    border-radius: 50% !important;
+    z-index: 2;
+  }
   .visits-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
   .vcounter { display: flex; align-items: center; border-radius: 6px; overflow: hidden; font-size: 11px; font-weight: 600; }
   .vc-label { background: #1c1917; color: #a8b3cf; padding: 5px 9px; }
@@ -214,78 +224,215 @@ const fairyCanvas = document.getElementById('fairyCanvas');
 const fCtx = fairyCanvas.getContext('2d');
 
 class Dust {
-  constructor(x,y,angle){
-    this.x=x; this.y=y;
-    const spd=0.8+Math.random()*1.5;
-    this.vx=Math.cos(angle+Math.PI+(Math.random()-0.5)*1.2)*spd;
-    this.vy=Math.sin(angle+Math.PI+(Math.random()-0.5)*1.2)*spd-0.5;
-    this.life=0; this.maxLife=25+Math.random()*20;
-    this.r=1+Math.random()*2.5;
-    this.color=Math.random()<0.5?`hsl(${280+Math.random()*30},90%,75%)`:`hsl(${190+Math.random()*20},90%,75%)`;
+  constructor(x, y, angle, isHovering) {
+    this.x = x;
+    this.y = y;
+    this.life = 0;
+    this.maxLife = 35 + Math.random() * 25;
+    this.r = 1.2 + Math.random() * 2.2;
+    
+    const rColors = [
+      `hsl(${280 + Math.random() * 30}, 95%, 75%)`, // morado/violeta
+      `hsl(${190 + Math.random() * 25}, 90%, 75%)`, // cian/azul
+      `hsl(${320 + Math.random() * 30}, 95%, 75%)`  // rosa/magenta
+    ];
+    this.color = rColors[Math.floor(Math.random() * rColors.length)];
+    
+    const spd = isHovering ? (0.4 + Math.random() * 0.8) : (0.8 + Math.random() * 1.6);
+    const spread = isHovering ? Math.PI * 2 : 1.2;
+    const baseAngle = isHovering ? angle : angle + Math.PI;
+    
+    this.vx = Math.cos(baseAngle + (Math.random() - 0.5) * spread) * spd;
+    this.vy = Math.sin(baseAngle + (Math.random() - 0.5) * spread) * spd - (isHovering ? 0.2 : 0.4);
+    
+    this.wobblePhase = Math.random() * Math.PI * 2;
+    this.wobbleSpeed = 0.05 + Math.random() * 0.08;
+    this.wobbleAmp = 0.15 + Math.random() * 0.2;
   }
-  update(){ this.life++; this.x+=this.vx; this.y+=this.vy; this.vy+=0.04; }
-  draw(){
-    const a=(1-this.life/this.maxLife)*0.85;
-    fCtx.save(); fCtx.globalAlpha=a; fCtx.beginPath(); fCtx.arc(this.x,this.y,this.r,0,Math.PI*2); fCtx.fillStyle=this.color; fCtx.fill(); fCtx.restore();
+  
+  update() {
+    this.life++;
+    this.x += this.vx;
+    this.y += this.vy;
+    
+    this.vx *= 0.97;
+    this.vy *= 0.97;
+    
+    this.vy -= 0.01;
+    
+    this.wobblePhase += this.wobbleSpeed;
+    this.x += Math.sin(this.wobblePhase) * this.wobbleAmp;
   }
-  dead(){ return this.life>this.maxLife; }
+  
+  draw() {
+    const progress = this.life / this.maxLife;
+    const alpha = (1 - progress) * 0.9;
+    const size = this.r * (1 + 0.3 * Math.sin(this.life * 0.25));
+    
+    fCtx.save();
+    fCtx.globalAlpha = alpha;
+    
+    fCtx.shadowBlur = 6;
+    fCtx.shadowColor = this.color;
+    
+    fCtx.fillStyle = this.color;
+    fCtx.beginPath();
+    fCtx.moveTo(this.x, this.y - size * 2.2);
+    fCtx.quadraticCurveTo(this.x, this.y, this.x + size * 2.2, this.y);
+    fCtx.quadraticCurveTo(this.x, this.y, this.x, this.y + size * 2.2);
+    fCtx.quadraticCurveTo(this.x, this.y, this.x - size * 2.2, this.y);
+    fCtx.quadraticCurveTo(this.x, this.y, this.x, this.y - size * 2.2);
+    fCtx.fill();
+    
+    fCtx.shadowBlur = 0;
+    fCtx.fillStyle = '#ffffff';
+    fCtx.beginPath();
+    fCtx.arc(this.x, this.y, size * 0.6, 0, Math.PI * 2);
+    fCtx.fill();
+    
+    fCtx.restore();
+  }
+  
+  dead() {
+    return this.life > this.maxLife;
+  }
 }
 
 const fairy = {
   x: 80, y: 80,
+  vx: 0, vy: 0,
   tx: 80, ty: 80,
   angle: 0,
+  tilt: 0,
+  lastFacing: 1,
+  state: 'flying',
+  hoverTimer: 0,
+  hoverDuration: 120,
+  maxSpeed: 2.5,
+  maxForce: 0.065,
+  friction: 0.985,
   wingPhase: 0,
   glowPhase: 0,
   dustTimer: 0,
-  path: [],
-  pathIndex: 0,
-  pathTimer: 0,
   dusts: [],
   init() {
-    this.path = [
-      {x:80,y:60},{x:200,y:40},{x:340,y:80},{x:480,y:45},{x:600,y:70},
-      {x:580,y:130},{x:440,y:160},{x:300,y:140},{x:160,y:165},{x:80,y:140},
-      {x:100,y:90},{x:250,y:55},{x:420,y:100},{x:550,y:60},{x:620,y:110},
-      {x:500,y:170},{x:350,y:185},{x:200,y:170},{x:90,y:180},{x:80,y:120}
-    ];
-    this.x = this.path[0].x; this.y = this.path[0].y;
+    this.x = 80;
+    this.y = 80;
+    this.vx = 0;
+    this.vy = 0;
+    this.tx = 300;
+    this.ty = 80;
+    this.angle = 0;
+    this.tilt = 0;
+    this.lastFacing = 1;
+    this.state = 'flying';
+    this.hoverTimer = 0;
+    this.hoverDuration = 120;
+    this.dusts = [];
+    this.getNewTarget();
+  },
+  getNewTarget() {
+    let tx, ty;
+    let d = 0;
+    let attempts = 0;
+    do {
+      tx = 80 + Math.random() * 520;
+      ty = 45 + Math.random() * 130;
+      d = Math.hypot(tx - this.x, ty - this.y);
+      attempts++;
+    } while (d < 160 && attempts < 20);
+    this.tx = tx;
+    this.ty = ty;
+    this.state = 'flying';
   },
   update() {
-    this.wingPhase += 0.18;
+    this.wingPhase += 0.22;
     this.glowPhase += 0.04;
-    this.pathTimer++;
-    if(this.pathTimer > 90) {
-      this.pathIndex = (this.pathIndex+1) % this.path.length;
-      this.pathTimer = 0;
+    
+    if (this.state === 'flying') {
+      const dx = this.tx - this.x;
+      const dy = this.ty - this.y;
+      const dist = Math.hypot(dx, dy);
+      
+      if (dist < 22) {
+        this.state = 'hovering';
+        this.hoverTimer = 0;
+        this.hoverDuration = 90 + Math.random() * 90;
+      } else {
+        let speed = this.maxSpeed;
+        if (dist < 70) {
+          speed = this.maxSpeed * (dist / 70);
+        }
+        
+        const dvx = (dx / dist) * speed;
+        const dvy = (dy / dist) * speed;
+        
+        let steerX = dvx - this.vx;
+        let steerY = dvy - this.vy;
+        
+        const steerDist = Math.hypot(steerX, steerY);
+        if (steerDist > this.maxForce) {
+          steerX = (steerX / steerDist) * this.maxForce;
+          steerY = (steerY / steerDist) * this.maxForce;
+        }
+        
+        this.vx += steerX;
+        this.vy += steerY;
+      }
+      
+      this.x += this.vx;
+      this.y += this.vy;
+      
+      this.vx *= this.friction;
+      this.vy *= this.friction;
+      
+      const speed = Math.hypot(this.vx, this.vy);
+      if (speed > 0.1) {
+        this.angle = Math.atan2(this.vy, this.vx);
+        if (this.vx < -0.1) this.lastFacing = -1;
+        else if (this.vx > 0.1) this.lastFacing = 1;
+        
+        const targetTilt = Math.min(Math.max(this.vy * 0.08, -0.22), 0.22);
+        this.tilt += (targetTilt - this.tilt) * 0.1;
+      }
+    } else if (this.state === 'hovering') {
+      this.hoverTimer++;
+      
+      this.x += Math.sin(this.hoverTimer * 0.06) * 0.22;
+      this.y += Math.cos(this.hoverTimer * 0.09) * 0.22;
+      
+      this.vx *= 0.85;
+      this.vy *= 0.85;
+      
+      this.tilt += (0 - this.tilt) * 0.08;
+      
+      if (this.hoverTimer >= this.hoverDuration) {
+        this.getNewTarget();
+      }
     }
-    const target = this.path[this.pathIndex];
-    const progress = this.pathTimer / 90;
-    const prevIdx = (this.pathIndex - 1 + this.path.length) % this.path.length;
-    const prev = this.path[prevIdx];
-    const dx = target.x - prev.x, dy = target.y - prev.y;
-    const oldX = this.x, oldY = this.y;
-    this.x = prev.x + dx * this.easeInOut(progress);
-    this.y = prev.y + dy * this.easeInOut(progress);
-    const moveX = this.x - oldX, moveY = this.y - oldY;
-    if(Math.abs(moveX)>0.01||Math.abs(moveY)>0.01) this.angle = Math.atan2(moveY, moveX);
+    
     this.dustTimer++;
-    if(this.dustTimer >= 3) {
+    if (this.dustTimer >= (this.state === 'hovering' ? 4 : 2)) {
       this.dustTimer = 0;
-      for(let i=0;i<2;i++) this.dusts.push(new Dust(this.x, this.y+12, this.angle));
+      const angleOffset = this.state === 'hovering' ? Math.random() * Math.PI * 2 : this.angle;
+      this.dusts.push(new Dust(this.x, this.y + 10, angleOffset, this.state === 'hovering'));
     }
-    this.dusts = this.dusts.filter(d=>{ d.update(); return !d.dead(); });
+    
+    this.dusts = this.dusts.filter(d => {
+      d.update();
+      return !d.dead();
+    });
   },
-  easeInOut(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; },
   draw() {
     this.dusts.forEach(d=>d.draw());
     const x=this.x, y=this.y;
-    const facing = Math.cos(this.angle) < 0 ? -1 : 1;
+    const facing = this.lastFacing;
     const glow = 0.5 + 0.5*Math.sin(this.glowPhase);
 
     fCtx.save();
     fCtx.translate(x, y);
     fCtx.scale(facing, 1);
+    fCtx.rotate(this.tilt * facing);
 
     const wf = Math.sin(this.wingPhase);
     const wb = Math.sin(this.wingPhase + Math.PI);
@@ -409,25 +556,198 @@ function loop(){
 }
 loop();
 
+// --- 2D Snake simulation autonomous logic ---
 const grid = document.getElementById('snakeGrid');
-const snakeColors = ['#161b22','#0e4429','#006d32','#26a641','#39d353'];
-const snakeSet = new Set();
-for(let i=0;i<15;i++) snakeSet.add(10+i);
-for(let i=0;i<364;i++){
-  const cell=document.createElement('div');
-  cell.className='snake-cell';
-  const r=Math.random();
-  cell.style.background=snakeSet.has(i)?'#39d353':r>.85?snakeColors[4]:r>.7?snakeColors[3]:r>.55?snakeColors[2]:r>.4?snakeColors[1]:snakeColors[0];
+const COLS = 52;
+const ROWS = 7;
+const NUM_CELLS = COLS * ROWS;
+const snakeColors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
+const boardLevels = [];
+
+// Initialize board with background git commits
+for (let i = 0; i < NUM_CELLS; i++) {
+  const r = Math.random();
+  let lvl = 0;
+  if (r > 0.90) lvl = 4;
+  else if (r > 0.78) lvl = 3;
+  else if (r > 0.63) lvl = 2;
+  else if (r > 0.48) lvl = 1;
+  boardLevels.push(lvl);
+  
+  const cell = document.createElement('div');
+  cell.className = 'snake-cell';
+  cell.style.background = snakeColors[lvl];
   grid.appendChild(cell);
 }
-const snakeArr=Array.from(snakeSet);
-function animSnake(){
-  const cells=grid.children;
-  snakeArr.forEach((idx,i)=>{
-    if(cells[idx]) cells[idx].style.background=i===snakeArr.length-1?'#161b22':i===0?'#58a6ff':'#39d353';
+
+// Snake coordinates
+let snake = [
+  {x: 10, y: 3},
+  {x: 9, y: 3},
+  {x: 8, y: 3},
+  {x: 7, y: 3},
+  {x: 6, y: 3}
+];
+
+// Snake targets (special commits)
+let foods = [];
+
+function spawnFood() {
+  let attempts = 0;
+  while (attempts < 150) {
+    const fx = Math.floor(Math.random() * COLS);
+    const fy = Math.floor(Math.random() * ROWS);
+    const occupied = snake.some(s => s.x === fx && s.y === fy) || foods.some(f => f.x === fx && f.y === fy);
+    if (!occupied) {
+      return {x: fx, y: fy};
+    }
+    attempts++;
+  }
+  return {x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS)};
+}
+
+// Initial food items
+for (let i = 0; i < 3; i++) {
+  foods.push(spawnFood());
+}
+
+let snakeColorOffset = 0;
+
+function animSnake() {
+  const cells = grid.children;
+  if (!cells || cells.length === 0) return;
+
+  const head = snake[0];
+  
+  // Find closest food using Manhattan distance
+  let targetFood = foods[0];
+  let minDist = Infinity;
+  foods.forEach(f => {
+    const d = Math.abs(f.x - head.x) + Math.abs(f.y - head.y);
+    if (d < minDist) {
+      minDist = d;
+      targetFood = f;
+    }
   });
-  const next=(snakeArr[0]+1)%364; snakeArr.unshift(next); snakeArr.pop();
-  setTimeout(()=>requestAnimationFrame(animSnake),80);
+
+  // Calculate direction options
+  const directions = [
+    {x: 0, y: -1}, // Up
+    {x: 0, y: 1},  // Down
+    {x: -1, y: 0}, // Left
+    {x: 1, y: 0}   // Right
+  ];
+
+  let bestMove = null;
+  
+  // Collect all possible valid moves
+  const validMoves = [];
+  directions.forEach(dir => {
+    const nx = head.x + dir.x;
+    const ny = head.y + dir.y;
+    
+    // Bounds check
+    if (nx >= 0 && nx < COLS && ny >= 0 && ny < ROWS) {
+      // Body collision check (ignore very tip of tail as it moves)
+      const collidesBody = snake.slice(0, -1).some(seg => seg.x === nx && seg.y === ny);
+      if (!collidesBody) {
+        const d = Math.abs(nx - targetFood.x) + Math.abs(ny - targetFood.y);
+        validMoves.push({x: nx, y: ny, dist: d});
+      }
+    }
+  });
+
+  if (validMoves.length > 0) {
+    // Sort by distance to target food
+    validMoves.sort((a, b) => a.dist - b.dist);
+    bestMove = validMoves[0];
+  } else {
+    // Fallback: if trapped, try any in-bounds neighbor even if it hits body
+    const fallbackMoves = [];
+    directions.forEach(dir => {
+      const nx = head.x + dir.x;
+      const ny = head.y + dir.y;
+      if (nx >= 0 && nx < COLS && ny >= 0 && ny < ROWS) {
+        fallbackMoves.push({x: nx, y: ny});
+      }
+    });
+    if (fallbackMoves.length > 0) {
+      bestMove = fallbackMoves[Math.floor(Math.random() * fallbackMoves.length)];
+    }
+  }
+
+  if (bestMove) {
+    const newHead = {x: bestMove.x, y: bestMove.y};
+    
+    // Check if eating food
+    let ate = -1;
+    for (let i = 0; i < foods.length; i++) {
+      if (foods[i].x === newHead.x && foods[i].y === newHead.y) {
+        ate = i;
+        break;
+      }
+    }
+
+    if (ate !== -1) {
+      // Eat food
+      snake.unshift(newHead);
+      foods[ate] = spawnFood();
+      // Temporarily flash cell
+      const idx = newHead.y * COLS + newHead.x;
+      if (cells[idx]) {
+        cells[idx].style.transform = 'scale(1.3)';
+        setTimeout(() => { if (cells[idx]) cells[idx].style.transform = 'scale(1)'; }, 150);
+      }
+      // If snake gets too long, pop tail to keep it dynamic
+      if (snake.length > 15) {
+        snake.pop();
+      }
+    } else {
+      // Normal step
+      snake.unshift(newHead);
+      snake.pop();
+    }
+  }
+
+  // Restore baseline cells
+  for (let i = 0; i < NUM_CELLS; i++) {
+    cells[i].style.background = snakeColors[boardLevels[i]];
+    cells[i].style.boxShadow = 'none';
+    cells[i].style.borderRadius = '2px';
+    cells[i].classList.remove('snake-food');
+  }
+
+  // Draw foods
+  foods.forEach(f => {
+    const idx = f.y * COLS + f.x;
+    if (cells[idx]) {
+      cells[idx].classList.add('snake-food');
+    }
+  });
+
+  // Draw snake segments with animated gradient
+  snakeColorOffset += 3.5;
+  snake.forEach((seg, i) => {
+    const idx = seg.y * COLS + seg.x;
+    if (cells[idx]) {
+      if (i === 0) {
+        // Snake Head
+        cells[idx].style.background = 'linear-gradient(135deg, #00f2fe, #4facfe)';
+        cells[idx].style.boxShadow = '0 0 10px rgba(0, 242, 254, 0.9)';
+        cells[idx].style.borderRadius = '50%';
+        cells[idx].style.zIndex = '3';
+      } else {
+        // Snake Body segments
+        const hue = (280 + (i / snake.length) * 110 + snakeColorOffset) % 360;
+        cells[idx].style.background = `hsl(${hue}, 95%, 60%)`;
+        cells[idx].style.boxShadow = `0 0 6px hsl(${hue}, 95%, 60%)`;
+        cells[idx].style.borderRadius = '3px';
+        cells[idx].style.zIndex = '2';
+      }
+    }
+  });
+
+  setTimeout(() => requestAnimationFrame(animSnake), 120);
 }
 animSnake();
 

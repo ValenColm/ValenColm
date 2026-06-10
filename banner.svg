@@ -40,19 +40,19 @@
 
     /* ── Fairy flight path ── */
     @keyframes fly {
-      0%   { transform: translate(55px,125px)  scaleX(1) }
-      12%  { transform: translate(180px,92px)  scaleX(1) }
-      25%  { transform: translate(315px,122px) scaleX(1) }
-      38%  { transform: translate(452px,86px)  scaleX(1) }
-      49%  { transform: translate(585px,106px) scaleX(1) }
-      51%  { transform: translate(592px,106px) scaleX(-1) }
-      63%  { transform: translate(465px,135px) scaleX(-1) }
-      75%  { transform: translate(332px,96px)  scaleX(-1) }
-      88%  { transform: translate(192px,126px) scaleX(-1) }
-      99%  { transform: translate(62px,108px)  scaleX(-1) }
-      100% { transform: translate(55px,125px)  scaleX(1) }
+      0%   { transform: translate(55px,125px)  scaleX(1)  rotate(-6deg) }
+      12%  { transform: translate(180px,92px)  scaleX(1)  rotate(2deg) }
+      25%  { transform: translate(315px,122px) scaleX(1)  rotate(-4deg) }
+      38%  { transform: translate(452px,86px)  scaleX(1)  rotate(4deg) }
+      49%  { transform: translate(585px,106px) scaleX(1)  rotate(-2deg) }
+      51%  { transform: translate(592px,106px) scaleX(-1) rotate(-2deg) }
+      63%  { transform: translate(465px,135px) scaleX(-1) rotate(4deg) }
+      75%  { transform: translate(332px,96px)  scaleX(-1) rotate(-6deg) }
+      88%  { transform: translate(192px,126px) scaleX(-1) rotate(4deg) }
+      99%  { transform: translate(62px,108px)  scaleX(-1) rotate(-2deg) }
+      100% { transform: translate(55px,125px)  scaleX(1)  rotate(-6deg) }
     }
-    .fairy { animation: fly 24s infinite linear }
+    .fairy { animation: fly 24s infinite ease-in-out }
 
     /* Bob up/down */
     @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
