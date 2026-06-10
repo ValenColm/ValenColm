@@ -4,35 +4,31 @@
       <stop offset="0%" stop-color="#0a0118"/>
       <stop offset="100%" stop-color="#16082c"/>
     </linearGradient>
+    <!-- Only used for the NAME text glow, not for the fairy -->
     <filter id="neon">
       <feGaussianBlur stdDeviation="5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="dustglow">
-      <feGaussianBlur stdDeviation="1.5" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
   <style>
     /* ── Stars ── */
-    @keyframes tw  { 0%,100%{opacity:.15} 50%{opacity:.95} }
-    @keyframes tw2 { 0%,100%{opacity:.2}  50%{opacity:.8}  }
-    .s1{animation:tw  3s   infinite ease-in-out}
-    .s2{animation:tw  4.3s infinite ease-in-out 1.1s}
-    .s3{animation:tw2 2.8s infinite ease-in-out 0.5s}
-    .s4{animation:tw  5.1s infinite ease-in-out 1.9s}
-    .s5{animation:tw2 3.6s infinite ease-in-out 2.4s}
-    .s6{animation:tw  4.9s infinite ease-in-out 0.9s}
+    @keyframes tw  { 0%,100%{opacity:.12} 50%{opacity:.95} }
+    @keyframes tw2 { 0%,100%{opacity:.2}  50%{opacity:.75} }
+    .s1{animation:tw  3.1s infinite ease-in-out}
+    .s2{animation:tw  4.4s infinite ease-in-out 1.2s}
+    .s3{animation:tw2 2.9s infinite ease-in-out 0.6s}
+    .s4{animation:tw  5.2s infinite ease-in-out 2s}
+    .s5{animation:tw2 3.7s infinite ease-in-out 2.5s}
+    .s6{animation:tw  4.8s infinite ease-in-out 1s}
 
     /* ── Floating code ── */
-    .snip{font-family:'Courier New',monospace;font-weight:700;fill-opacity:0}
-    .sp{fill:#a855f7} .sc{fill:#0ea5e9} .sk{fill:#ec4899}
+    .snip{font-family:'Courier New',monospace;font-weight:700;fill-opacity:0;font-size:11px}
     @keyframes rise1{0%{transform:translate(55px,268px);fill-opacity:0}12%{fill-opacity:.4}85%{fill-opacity:.4}100%{transform:translate(70px,42px);fill-opacity:0}}
-    @keyframes rise2{0%{transform:translate(165px,268px);fill-opacity:0}12%{fill-opacity:.45}85%{fill-opacity:.45}100%{transform:translate(150px,46px);fill-opacity:0}}
-    @keyframes rise3{0%{transform:translate(305px,268px);fill-opacity:0}12%{fill-opacity:.38}85%{fill-opacity:.38}100%{transform:translate(320px,44px);fill-opacity:0}}
-    @keyframes rise4{0%{transform:translate(455px,268px);fill-opacity:0}12%{fill-opacity:.42}85%{fill-opacity:.42}100%{transform:translate(440px,50px);fill-opacity:0}}
-    @keyframes rise5{0%{transform:translate(595px,268px);fill-opacity:0}12%{fill-opacity:.4}85%{fill-opacity:.4}100%{transform:translate(610px,46px);fill-opacity:0}}
+    @keyframes rise2{0%{transform:translate(170px,268px);fill-opacity:0}12%{fill-opacity:.45}85%{fill-opacity:.45}100%{transform:translate(150px,46px);fill-opacity:0}}
+    @keyframes rise3{0%{transform:translate(310px,268px);fill-opacity:0}12%{fill-opacity:.35}85%{fill-opacity:.35}100%{transform:translate(325px,44px);fill-opacity:0}}
+    @keyframes rise4{0%{transform:translate(460px,268px);fill-opacity:0}12%{fill-opacity:.42}85%{fill-opacity:.42}100%{transform:translate(445px,50px);fill-opacity:0}}
+    @keyframes rise5{0%{transform:translate(600px,268px);fill-opacity:0}12%{fill-opacity:.4}85%{fill-opacity:.4}100%{transform:translate(615px,46px);fill-opacity:0}}
     .r1{animation:rise1 13s infinite linear}
     .r2{animation:rise2 11s infinite linear 2.5s}
     .r3{animation:rise3 14s infinite linear 5s}
@@ -42,115 +38,73 @@
     .r2b{animation:rise2 11s infinite linear 8.5s}
     .r3b{animation:rise3 14s infinite linear 9.2s}
 
-    /* ── Fairy flight ── */
+    /* ── Fairy flight path ── */
     @keyframes fly {
-      0%   {transform:translate(55px,130px)  scaleX(1)}
-      12%  {transform:translate(175px,95px)  scaleX(1)}
-      25%  {transform:translate(310px,125px) scaleX(1)}
-      38%  {transform:translate(450px,88px)  scaleX(1)}
-      49%  {transform:translate(582px,108px) scaleX(1)}
-      51%  {transform:translate(590px,108px) scaleX(-1)}
-      63%  {transform:translate(462px,138px) scaleX(-1)}
-      75%  {transform:translate(330px,98px)  scaleX(-1)}
-      88%  {transform:translate(188px,128px) scaleX(-1)}
-      99%  {transform:translate(60px,110px)  scaleX(-1)}
-      100% {transform:translate(55px,130px)  scaleX(1)}
+      0%   { transform: translate(55px,125px)  scaleX(1) }
+      12%  { transform: translate(180px,92px)  scaleX(1) }
+      25%  { transform: translate(315px,122px) scaleX(1) }
+      38%  { transform: translate(452px,86px)  scaleX(1) }
+      49%  { transform: translate(585px,106px) scaleX(1) }
+      51%  { transform: translate(592px,106px) scaleX(-1) }
+      63%  { transform: translate(465px,135px) scaleX(-1) }
+      75%  { transform: translate(332px,96px)  scaleX(-1) }
+      88%  { transform: translate(192px,126px) scaleX(-1) }
+      99%  { transform: translate(62px,108px)  scaleX(-1) }
+      100% { transform: translate(55px,125px)  scaleX(1) }
     }
-    .fairy{animation:fly 24s infinite linear}
+    .fairy { animation: fly 24s infinite linear }
 
-    /* Hover bob */
-    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-    .fbob{animation:bob 1.8s infinite ease-in-out}
+    /* Bob up/down */
+    @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+    .fbob { animation: bob 1.9s infinite ease-in-out }
 
-    /* Wing flap */
-    @keyframes wl{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.18)}}
-    @keyframes wr{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.18)}}
-    .wl{animation:wl .11s infinite linear;transform-origin:0 0}
-    .wr{animation:wr .11s infinite linear;transform-origin:0 0}
+    /* Wing flap — fast, back-and-forth skew */
+    @keyframes wflap { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(.15)} }
+    .wl { animation:wflap .12s infinite linear; transform-origin:right center }
+    .wr { animation:wflap .12s infinite linear .06s; transform-origin:left center }
 
-    /* Aura */
-    @keyframes aura{0%,100%{opacity:.1;r:13}50%{opacity:.28;r:18}}
-    .aura{animation:aura 2s infinite ease-in-out}
+    /* ── Dust particles — inside fairy group, NO blur filter ──
+       They start near the fairy's feet (y≈10) and drift
+       backward in the fairy's LOCAL space (negative x = behind).
+       Because the fairy group uses scaleX(-1) when turning left,
+       the negative x automatically becomes "behind" in both directions. */
 
-    /* ────────────────────────────────────────────────
-       DUST — particles live INSIDE the fairy group so
-       they inherit the fairy's transform and always
-       appear at the correct position behind the fairy.
-       They drift backward (negative x) and downward,
-       fading out.
-    ──────────────────────────────────────────────── */
+    @keyframes dp0{0%{transform:translate(0,10px);opacity:.9}100%{transform:translate(-30px,22px);opacity:0}}
+    @keyframes dp1{0%{transform:translate(2px,12px);opacity:.8}100%{transform:translate(-24px,26px);opacity:0}}
+    @keyframes dp2{0%{transform:translate(-1px,9px);opacity:.95}100%{transform:translate(-38px,18px);opacity:0}}
+    @keyframes dp3{0%{transform:translate(3px,11px);opacity:.85}100%{transform:translate(-20px,28px);opacity:0}}
+    @keyframes dp4{0%{transform:translate(0,13px);opacity:.9}100%{transform:translate(-44px,16px);opacity:0}}
+    @keyframes dp5{0%{transform:translate(-2px,10px);opacity:.75}100%{transform:translate(-32px,24px);opacity:0}}
+    @keyframes dp6{0%{transform:translate(1px,12px);opacity:.88}100%{transform:translate(-28px,20px);opacity:0}}
+    @keyframes dp7{0%{transform:translate(-3px,11px);opacity:.82}100%{transform:translate(-40px,22px);opacity:0}}
+    @keyframes dp8{0%{transform:translate(2px,9px);opacity:.92}100%{transform:translate(-22px,30px);opacity:0}}
+    @keyframes dp9{0%{transform:translate(0,14px);opacity:.78}100%{transform:translate(-36px,18px);opacity:0}}
 
-    /* Each dust particle: starts at the fairy's feet
-       (offset: x≈0, y≈12) then drifts in -x direction
-       (which auto-flips when fairy turns) and fades */
+    /* Stagger 10 particles evenly across the 1.5s cycle */
+    .dp0{fill:#e9d5ff;r:2;animation:dp0 1.5s infinite ease-out;animation-delay:0s}
+    .dp1{fill:#7dd3fc;r:1.5;animation:dp1 1.5s infinite ease-out;animation-delay:.15s}
+    .dp2{fill:#c4b5fd;r:2.2;animation:dp2 1.5s infinite ease-out;animation-delay:.30s}
+    .dp3{fill:#a855f7;r:1.8;animation:dp3 1.5s infinite ease-out;animation-delay:.45s}
+    .dp4{fill:#e9d5ff;r:1.2;animation:dp4 1.5s infinite ease-out;animation-delay:.60s}
+    .dp5{fill:#7dd3fc;r:2.4;animation:dp5 1.5s infinite ease-out;animation-delay:.75s}
+    .dp6{fill:#c4b5fd;r:1.6;animation:dp6 1.5s infinite ease-out;animation-delay:.90s}
+    .dp7{fill:#a855f7;r:2;animation:dp7 1.5s infinite ease-out;animation-delay:1.05s}
+    .dp8{fill:#e9d5ff;r:1.4;animation:dp8 1.5s infinite ease-out;animation-delay:1.20s}
+    .dp9{fill:#7dd3fc;r:1.8;animation:dp9 1.5s infinite ease-out;animation-delay:1.35s}
 
-    @keyframes d0 {
-      0%  {transform:translate(0px,12px);   opacity:.95; r:2.5}
-      100%{transform:translate(-28px,20px); opacity:0;   r:1}
-    }
-    @keyframes d1 {
-      0%  {transform:translate(0px,10px);   opacity:.9;  r:2}
-      100%{transform:translate(-22px,26px); opacity:0;   r:.8}
-    }
-    @keyframes d2 {
-      0%  {transform:translate(2px,13px);   opacity:.85; r:3}
-      100%{transform:translate(-35px,18px); opacity:0;   r:1.2}
-    }
-    @keyframes d3 {
-      0%  {transform:translate(-2px,11px);  opacity:.9;  r:2.2}
-      100%{transform:translate(-18px,28px); opacity:0;   r:.7}
-    }
-    @keyframes d4 {
-      0%  {transform:translate(3px,14px);   opacity:.8;  r:1.8}
-      100%{transform:translate(-42px,15px); opacity:0;   r:.6}
-    }
-    @keyframes d5 {
-      0%  {transform:translate(0px,9px);    opacity:.95; r:2.8}
-      100%{transform:translate(-30px,22px); opacity:0;   r:1.1}
-    }
-    @keyframes d6 {
-      0%  {transform:translate(-3px,13px);  opacity:.85; r:2}
-      100%{transform:translate(-25px,30px); opacity:0;   r:.8}
-    }
-    @keyframes d7 {
-      0%  {transform:translate(2px,10px);   opacity:.9;  r:1.5}
-      100%{transform:translate(-38px,19px); opacity:0;   r:.5}
-    }
-    @keyframes d8 {
-      0%  {transform:translate(0px,14px);   opacity:.88; r:3.2}
-      100%{transform:translate(-20px,25px); opacity:0;   r:1.3}
-    }
-    @keyframes d9 {
-      0%  {transform:translate(1px,11px);   opacity:.92; r:2.4}
-      100%{transform:translate(-32px,21px); opacity:0;   r:.9}
-    }
-
-    /* Stagger each particle through a cycle so there's
-       always dust visible — delay = i * (duration/N) */
-    .p0{fill:#e9d5ff;animation:d0 1.4s infinite ease-out;animation-delay:0s}
-    .p1{fill:#7dd3fc;animation:d1 1.4s infinite ease-out;animation-delay:.14s}
-    .p2{fill:#c4b5fd;animation:d2 1.4s infinite ease-out;animation-delay:.28s}
-    .p3{fill:#a855f7;animation:d3 1.4s infinite ease-out;animation-delay:.42s}
-    .p4{fill:#e9d5ff;animation:d4 1.4s infinite ease-out;animation-delay:.56s}
-    .p5{fill:#7dd3fc;animation:d5 1.4s infinite ease-out;animation-delay:.70s}
-    .p6{fill:#c4b5fd;animation:d6 1.4s infinite ease-out;animation-delay:.84s}
-    .p7{fill:#a855f7;animation:d7 1.4s infinite ease-out;animation-delay:.98s}
-    .p8{fill:#e9d5ff;animation:d8 1.4s infinite ease-out;animation-delay:1.12s}
-    .p9{fill:#7dd3fc;animation:d9 1.4s infinite ease-out;animation-delay:1.26s}
-
-    /* Tiny sparkle whites mixed into the trail */
-    @keyframes sp{0%,100%{opacity:0;r:.5}40%{opacity:1;r:1.8}}
-    .sp0{fill:#fff;animation:sp 1.4s infinite ease-out;animation-delay:.07s}
-    .sp1{fill:#fff;animation:sp 1.4s infinite ease-out;animation-delay:.35s}
-    .sp2{fill:#fff;animation:sp 1.4s infinite ease-out;animation-delay:.63s}
-    .sp3{fill:#fff;animation:sp 1.4s infinite ease-out;animation-delay:.91s}
-    .sp4{fill:#fff;animation:sp 1.4s infinite ease-out;animation-delay:1.19s}
+    /* White sparkles mixed in */
+    @keyframes ws{0%,100%{opacity:0;r:.4}40%{opacity:1;r:1.5}}
+    .ws0{fill:#fff;animation:ws 1.5s infinite ease-out;animation-delay:.07s}
+    .ws1{fill:#fff;animation:ws 1.5s infinite ease-out;animation-delay:.37s}
+    .ws2{fill:#fff;animation:ws 1.5s infinite ease-out;animation-delay:.67s}
+    .ws3{fill:#fff;animation:ws 1.5s infinite ease-out;animation-delay:.97s}
+    .ws4{fill:#fff;animation:ws 1.5s infinite ease-out;animation-delay:1.27s}
   </style>
 
   <!-- Background -->
-  <rect width="680" height="260" rx="12" class="bg"/>
+  <rect width="680" height="260" rx="12" fill="url(#bgGrad)"/>
 
-  <!-- Mac window bar -->
+  <!-- Mac-style window bar -->
   <path d="M0 12 A12 12 0 0 1 12 0 L668 0 A12 12 0 0 1 680 12 L680 38 L0 38 Z" fill="#161b22"/>
   <line x1="0" y1="38" x2="680" y2="38" stroke="#30363d" stroke-width="1"/>
   <circle cx="20" cy="19" r="5" fill="#ff5f57"/>
@@ -163,121 +117,120 @@
   </text>
 
   <!-- Stars -->
-  <circle cx="42"  cy="64"  r="1.1" fill="#d8b4fe" class="s1"/>
-  <circle cx="90"  cy="82"  r="1.1" fill="#7dd3fc" class="s2"/>
-  <circle cx="118" cy="52"  r="0.9" fill="#d8b4fe" class="s3"/>
-  <circle cx="178" cy="74"  r="1.2" fill="#7dd3fc" class="s4"/>
-  <circle cx="235" cy="58"  r="1.0" fill="#d8b4fe" class="s5"/>
-  <circle cx="295" cy="78"  r="0.8" fill="#7dd3fc" class="s6"/>
-  <circle cx="345" cy="48"  r="1.1" fill="#d8b4fe" class="s1"/>
-  <circle cx="415" cy="68"  r="0.9" fill="#7dd3fc" class="s3"/>
-  <circle cx="462" cy="54"  r="1.2" fill="#d8b4fe" class="s2"/>
-  <circle cx="525" cy="82"  r="1.0" fill="#7dd3fc" class="s5"/>
-  <circle cx="575" cy="62"  r="1.1" fill="#d8b4fe" class="s4"/>
-  <circle cx="635" cy="72"  r="0.9" fill="#7dd3fc" class="s6"/>
-  <circle cx="32"  cy="185" r="0.9" fill="#d8b4fe" class="s3"/>
-  <circle cx="98"  cy="222" r="1.1" fill="#7dd3fc" class="s1"/>
-  <circle cx="158" cy="192" r="1.0" fill="#d8b4fe" class="s5"/>
-  <circle cx="218" cy="235" r="0.8" fill="#7dd3fc" class="s2"/>
-  <circle cx="278" cy="175" r="1.2" fill="#d8b4fe" class="s6"/>
-  <circle cx="318" cy="218" r="0.9" fill="#7dd3fc" class="s4"/>
-  <circle cx="378" cy="188" r="1.1" fill="#d8b4fe" class="s1"/>
-  <circle cx="438" cy="238" r="1.0" fill="#7dd3fc" class="s3"/>
-  <circle cx="498" cy="198" r="0.8" fill="#d8b4fe" class="s5"/>
-  <circle cx="558" cy="228" r="1.2" fill="#7dd3fc" class="s2"/>
-  <circle cx="618" cy="182" r="1.0" fill="#d8b4fe" class="s4"/>
-  <circle cx="652" cy="218" r="1.1" fill="#7dd3fc" class="s6"/>
+  <circle cx="42"  cy="64"  r="1" fill="#d8b4fe" class="s1"/>
+  <circle cx="90"  cy="82"  r="1" fill="#7dd3fc" class="s2"/>
+  <circle cx="118" cy="52"  r="1" fill="#d8b4fe" class="s3"/>
+  <circle cx="178" cy="74"  r="1" fill="#7dd3fc" class="s4"/>
+  <circle cx="235" cy="58"  r="1" fill="#d8b4fe" class="s5"/>
+  <circle cx="295" cy="78"  r="1" fill="#7dd3fc" class="s6"/>
+  <circle cx="345" cy="48"  r="1" fill="#d8b4fe" class="s1"/>
+  <circle cx="415" cy="68"  r="1" fill="#7dd3fc" class="s3"/>
+  <circle cx="462" cy="54"  r="1" fill="#d8b4fe" class="s2"/>
+  <circle cx="525" cy="82"  r="1" fill="#7dd3fc" class="s5"/>
+  <circle cx="575" cy="62"  r="1" fill="#d8b4fe" class="s4"/>
+  <circle cx="635" cy="72"  r="1" fill="#7dd3fc" class="s6"/>
+  <circle cx="32"  cy="185" r="1" fill="#d8b4fe" class="s3"/>
+  <circle cx="98"  cy="222" r="1" fill="#7dd3fc" class="s1"/>
+  <circle cx="158" cy="192" r="1" fill="#d8b4fe" class="s5"/>
+  <circle cx="218" cy="235" r="1" fill="#7dd3fc" class="s2"/>
+  <circle cx="278" cy="175" r="1" fill="#d8b4fe" class="s6"/>
+  <circle cx="318" cy="218" r="1" fill="#7dd3fc" class="s4"/>
+  <circle cx="378" cy="188" r="1" fill="#d8b4fe" class="s1"/>
+  <circle cx="438" cy="238" r="1" fill="#7dd3fc" class="s3"/>
+  <circle cx="498" cy="198" r="1" fill="#d8b4fe" class="s5"/>
+  <circle cx="558" cy="228" r="1" fill="#7dd3fc" class="s2"/>
+  <circle cx="618" cy="182" r="1" fill="#d8b4fe" class="s4"/>
+  <circle cx="652" cy="218" r="1" fill="#7dd3fc" class="s6"/>
 
-  <!-- Floating code -->
-  <text class="snip sp r1">{}</text>
-  <text class="snip sc r2">&lt;/&gt;</text>
-  <text class="snip sk r3">()=&gt;</text>
-  <text class="snip sp r4">AI</text>
-  <text class="snip sc r5">RAG</text>
-  <text class="snip sk r1b">def</text>
-  <text class="snip sp r2b">API</text>
-  <text class="snip sc r3b">LLM</text>
+  <!-- Floating code snippets -->
+  <text class="snip r1" fill="#a855f7">{}</text>
+  <text class="snip r2" fill="#0ea5e9">&lt;/&gt;</text>
+  <text class="snip r3" fill="#ec4899">()=&gt;</text>
+  <text class="snip r4" fill="#a855f7">AI</text>
+  <text class="snip r5" fill="#0ea5e9">RAG</text>
+  <text class="snip r1b" fill="#ec4899">def</text>
+  <text class="snip r2b" fill="#a855f7">API</text>
+  <text class="snip r3b" fill="#0ea5e9">LLM</text>
 
-  <!-- Title text -->
-  <text x="340" y="185" text-anchor="middle"
-        font-family="Georgia,serif" font-size="28" font-weight="700"
-        fill="#a855f7" filter="url(#neon)" opacity="0.55">Valentina Bolivar</text>
-  <text x="340" y="185" text-anchor="middle"
-        font-family="Georgia,serif" font-size="28" font-weight="700"
+  <!-- Title text (neon glow only on text) -->
+  <text x="340" y="188" text-anchor="middle"
+        font-family="Georgia,serif" font-size="27" font-weight="700"
+        fill="#a855f7" filter="url(#neon)" opacity="0.5">Valentina Bolivar</text>
+  <text x="340" y="188" text-anchor="middle"
+        font-family="Georgia,serif" font-size="27" font-weight="700"
         fill="#e8d5ff" letter-spacing="1">Valentina Bolivar</text>
-  <text x="340" y="212" text-anchor="middle"
+  <text x="340" y="214" text-anchor="middle"
         font-family="Courier New,monospace" font-size="11" font-weight="700"
         fill="#7dd3fc" letter-spacing="4">SOFTWARE DEVELOPER</text>
-  <text x="340" y="232" text-anchor="middle"
+  <text x="340" y="234" text-anchor="middle"
         font-family="Courier New,monospace" font-size="9"
         fill="#a78bfa" letter-spacing="2">AI · AUTOMATION · BACKEND</text>
 
-  <!-- =================== FAIRY GROUP =================== -->
-  <!-- Everything inside this group inherits the fly() transform,
-       so the dust is always relative to the fairy's current position -->
+  <!-- ===================== FAIRY ===================== -->
   <g class="fairy">
     <g class="fbob">
 
-      <!-- ── DUST (inside fairy group = moves with fairy) ── -->
-      <g filter="url(#dustglow)">
-        <!-- 10 colour particles -->
-        <circle r="2" class="p0"/><circle r="2" class="p1"/>
-        <circle r="2" class="p2"/><circle r="2" class="p3"/>
-        <circle r="2" class="p4"/><circle r="2" class="p5"/>
-        <circle r="2" class="p6"/><circle r="2" class="p7"/>
-        <circle r="2" class="p8"/><circle r="2" class="p9"/>
-        <!-- 5 white sparkles -->
-        <circle r="1" class="sp0"/><circle r="1" class="sp1"/>
-        <circle r="1" class="sp2"/><circle r="1" class="sp3"/>
-        <circle r="1" class="sp4"/>
+      <!-- DUST — no blur filter, just crisp small dots -->
+      <circle class="dp0"/><circle class="dp1"/>
+      <circle class="dp2"/><circle class="dp3"/>
+      <circle class="dp4"/><circle class="dp5"/>
+      <circle class="dp6"/><circle class="dp7"/>
+      <circle class="dp8"/><circle class="dp9"/>
+      <circle class="ws0"/><circle class="ws1"/>
+      <circle class="ws2"/><circle class="ws3"/>
+      <circle class="ws4"/>
+
+      <!-- LEFT WING (drawn first so body is on top) -->
+      <g class="wl">
+        <!-- Big outer wing -->
+        <path d="M-1,-5 C-10,-22 -34,-15 -26,0 C-18,12 -4,8 -1,-5Z"
+              fill="#c4b5fd" opacity="0.52"/>
+        <!-- Small inner lobe -->
+        <path d="M-1,-4 C-6,-14 -20,-9 -16,0 C-10,8 -2,5 -1,-4Z"
+              fill="#e9d5ff" opacity="0.70"/>
       </g>
 
-      <!-- ── Wings ── -->
-      <!-- Left wing -->
-      <g class="wl" transform="translate(-2,-4)">
-        <path d="M0,0 C-7,-14 -26,-9 -20,2 C-12,11 -3,8 0,0Z"
-              fill="#c4b5fd" opacity="0.55"/>
-        <path d="M0,0 C-4,-10 -17,-7 -13,2 C-8,8 -2,5 0,0Z"
-              fill="#e9d5ff" opacity="0.75"/>
-      </g>
-      <!-- Right wing -->
-      <g class="wr" transform="translate(2,-4)">
-        <path d="M0,0 C7,-14 26,-9 20,2 C12,11 3,8 0,0Z"
-              fill="#a5b4fc" opacity="0.45"/>
-        <path d="M0,0 C4,-10 17,-7 13,2 C8,8 2,5 0,0Z"
-              fill="#bfdbfe" opacity="0.65"/>
+      <!-- RIGHT WING -->
+      <g class="wr">
+        <!-- Big outer wing -->
+        <path d="M1,-5 C10,-22 34,-15 26,0 C18,12 4,8 1,-5Z"
+              fill="#a5b4fc" opacity="0.42"/>
+        <!-- Small inner lobe -->
+        <path d="M1,-4 C6,-14 20,-9 16,0 C10,8 2,5 1,-4Z"
+              fill="#bfdbfe" opacity="0.62"/>
       </g>
 
-      <!-- Aura glow -->
-      <circle cx="0" cy="0" r="13" class="aura" fill="#a855f7"/>
+      <!-- BODY (dress) -->
+      <ellipse cx="0" cy="4"  rx="4"   ry="6"   fill="#1e3a5f"/>
+      <ellipse cx="0" cy="4"  rx="3"   ry="4.5" fill="#2563eb"/>
+      <!-- Dress shimmer -->
+      <ellipse cx="0" cy="1"  rx="2"   ry="1.4" fill="#60a5fa" opacity="0.45"/>
 
-      <!-- Legs -->
-      <line x1="-2" y1="4"  x2="-4" y2="12" stroke="#fcd5b0" stroke-width="1.4" stroke-linecap="round"/>
-      <line x1="2"  y1="4"  x2="4"  y2="12" stroke="#fcd5b0" stroke-width="1.4" stroke-linecap="round"/>
-      <circle cx="-4" cy="12" r="1.4" fill="#fcd5b0"/>
-      <circle cx="4"  cy="12" r="1.4" fill="#fcd5b0"/>
-
-      <!-- Body -->
-      <ellipse cx="0" cy="3"  rx="4.2" ry="5.5" fill="#1e3a5f"/>
-      <ellipse cx="0" cy="3"  rx="3.2" ry="4.3" fill="#2563eb"/>
-      <ellipse cx="0" cy="1"  rx="2.2" ry="1.6" fill="#3b82f6" opacity="0.55"/>
-
-      <!-- Head -->
-      <circle cx="0" cy="-9" r="4.8" fill="#fcd5b0"/>
+      <!-- HEAD -->
+      <circle cx="0" cy="-9" r="4.5" fill="#fcd5b0"/>
       <!-- Hair bun -->
-      <ellipse cx="0"    cy="-14" rx="2.2" ry="1.9" fill="#d4a847"/>
-      <path d="M-4.8,-10 C-4.5,-13 4.5,-13 4.8,-10Z" fill="#d4a847"/>
+      <circle cx="0" cy="-14" r="2"    fill="#d4a847"/>
+      <path d="M-4.5,-10 C-4.3,-13 4.3,-13 4.5,-10Z" fill="#d4a847"/>
+      <!-- Tiny face details -->
+      <circle cx="-1.5" cy="-9.5" r=".6" fill="#5a3825" opacity="0.7"/>
+      <circle cx="1.5"  cy="-9.5" r=".6" fill="#5a3825" opacity="0.7"/>
 
-      <!-- Left arm + laptop -->
-      <line x1="-3" y1="-1" x2="-7.5" y2="3" stroke="#fcd5b0" stroke-width="1.2" stroke-linecap="round"/>
-      <g transform="translate(-8.5,3.5) rotate(-10)">
-        <rect x="-4" y="-4" width="8" height="6" rx="1" fill="#1e293b" stroke="#38bdf8" stroke-width="0.6"/>
-        <text x="-2.5" y="0.5" font-family="monospace" font-size="3.5" fill="#38bdf8" font-weight="bold">&gt;_</text>
-        <line x1="-4" y1="2.5" x2="4" y2="2.5" stroke="#475569" stroke-width="0.8"/>
+      <!-- LEGS -->
+      <line x1="-2" y1="5"  x2="-3.5" y2="13" stroke="#fcd5b0" stroke-width="1.3" stroke-linecap="round"/>
+      <line x1="2"  y1="5"  x2="3.5"  y2="13" stroke="#fcd5b0" stroke-width="1.3" stroke-linecap="round"/>
+      <circle cx="-3.5" cy="13" r="1.2" fill="#fcd5b0"/>
+      <circle cx="3.5"  cy="13" r="1.2" fill="#fcd5b0"/>
+
+      <!-- LEFT ARM + LAPTOP -->
+      <line x1="-2" y1="-1" x2="-7" y2="3" stroke="#fcd5b0" stroke-width="1.2" stroke-linecap="round"/>
+      <g transform="translate(-8,3.5) rotate(-12)">
+        <rect x="-3.5" y="-3.5" width="7" height="5.5" rx="1" fill="#1e293b" stroke="#38bdf8" stroke-width="0.6"/>
+        <text x="-2" y="0.5" font-family="monospace" font-size="3.5" fill="#38bdf8" font-weight="bold">&gt;_</text>
+        <line x1="-3.5" y1="2.2" x2="3.5" y2="2.2" stroke="#334155" stroke-width="0.7"/>
       </g>
 
-      <!-- Right arm -->
-      <line x1="3" y1="-1" x2="7" y2="4" stroke="#fcd5b0" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- RIGHT ARM -->
+      <line x1="2" y1="-1" x2="7" y2="4" stroke="#fcd5b0" stroke-width="1.2" stroke-linecap="round"/>
 
     </g>
   </g>
