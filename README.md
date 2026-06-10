@@ -99,5 +99,5 @@
 ---
 
 <div align="center">
-<i>Gracias por visitar mi perfil — Hecho con IA y mucho cafe</i>
+<i>Gracias por visitar mi perfil — Hecho con mucho café</i>
 </div>
