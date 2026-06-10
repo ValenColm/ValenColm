@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://github.com/ValenColm">
-  <img src="https://raw.githubusercontent.com/ValenColm/ValenColm/main/banner.svg?v=4" alt="Valentina Bolivar - Desarrolladora de Software" width="100%"/>
+  <img src="https://raw.githubusercontent.com/ValenColm/ValenColm/main/banner.svg?v=5" alt="Valentina Bolivar - Desarrolladora de Software" width="100%"/>
 </a>
 
 <br/>

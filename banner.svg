@@ -58,7 +58,7 @@
     @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
     .fbob { animation: bob 1.9s infinite ease-in-out }
 
-    /* Wing flap — fast, back-and-forth scale & rotate */
+    /* Wing flap — fast, back-and-forth scale and rotate */
     @keyframes wflapl { 0%,100%{transform:scale(1) rotate(0deg)} 50%{transform:scale(.2, .85) rotate(-10deg)} }
     @keyframes wflapr { 0%,100%{transform:scale(1) rotate(0deg)} 50%{transform:scale(.2, .85) rotate(10deg)} }
     .wl { animation:wflapl .15s infinite ease-in-out; transform-origin:right center; transform-box: fill-box; }
