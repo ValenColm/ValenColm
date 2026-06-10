@@ -102,9 +102,12 @@ and make AI work for people.
 
 <div align="center">
 
-<a href="https://github.com/ValenColm">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ValenColm&bg_color=0a0118&color=d8b4fe&line=7dd3fc&point=e6edf3&area=true&hide_border=true" alt="ValenColm's Activity Graph" width="100%"/>
-</a>
+<img src="https://github-readme-stats.vercel.app/api?username=ValenColm&show_icons=true&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&theme=transparent&hide_border=true&count_private=true&include_all_commits=true" alt="Valentina's Stats" height="165px"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ValenColm&layout=compact&title_color=d8b4fe&text_color=e6edf3&theme=transparent&hide_border=true&langs_count=6" alt="Top Languages" height="165px"/>
+
+<br/>
+
+<img src="https://streak-stats.demolab.com/?user=ValenColm&currStreakNum=d8b4fe&sideNums=e6edf3&sideLabels=8b949e&currStreakLabel=7dd3fc&theme=transparent&fire=7dd3fc&ring=a855f7&stroke=30363d&hide_border=true" alt="Streak" height="165px"/>
 
 </div>
 
