@@ -103,15 +103,15 @@ and make AI work for people.
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="55%" align="center">
-      <img src="https://github-readme-stats.vercel.app/api?username=ValenColm&show_icons=true&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&bg_color=00000000&hide_border=true&count_private=true&include_all_commits=true" alt="Valentina's Stats" width="100%"/>
+      <img src="https://github-readme-stats.vercel.app/api?username=ValenColm&show_icons=true&title_color=d8b4fe&icon_color=7dd3fc&text_color=e6edf3&bg_color=0d1117&hide_border=true&count_private=true" alt="Valentina's Stats" width="100%"/>
     </td>
     <td width="45%" align="center">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ValenColm&layout=compact&title_color=d8b4fe&text_color=e6edf3&bg_color=00000000&hide_border=true&langs_count=6" alt="Top Languages" width="100%"/>
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ValenColm&layout=compact&title_color=d8b4fe&text_color=e6edf3&bg_color=0d1117&hide_border=true&langs_count=6" alt="Top Languages" width="100%"/>
     </td>
   </tr>
   <tr>
     <td colspan="2" align="center">
-      <img src="https://streak-stats.demolab.com/?user=ValenColm&currStreakNum=d8b4fe&sideNums=e6edf3&sideLabels=8b949e&currStreakLabel=7dd3fc&background=00000000&fire=7dd3fc&ring=a855f7&stroke=30363d&hide_border=true" alt="Streak" width="70%"/>
+      <img src="https://streak-stats.demolab.com/?user=ValenColm&currStreakNum=d8b4fe&sideNums=e6edf3&sideLabels=8b949e&currStreakLabel=7dd3fc&background=0d1117&fire=7dd3fc&ring=a855f7&stroke=30363d&hide_border=true" alt="Streak" width="60%"/>
     </td>
   </tr>
 </table>
